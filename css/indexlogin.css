@@ -1,0 +1,89 @@
+body, input, select, textarea, button, .ui-btn {font-family: 'bikoregular' !important;}
+
+.ui-overlay-a, .ui-page-theme-a, .ui-page-theme-a .ui-panel-wrapper,.ui-btn {
+    text-shadow: none !important;
+}
+
+.form_at {/*padding buat login*/
+width: 70%;
+margin-top: 20px;
+margin-left: auto;
+margin-right: auto;
+}
+
+#border_button{
+	margin-top: 20px;
+}
+
+.ui-header, .ui-footer {
+       border-width: 0 0 !important;
+}
+
+.headpage {
+	height: 200px;
+	background-image: url(../img/login_logo.png);
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+
+#border_button .ui-btn {
+    border: none !important;
+    background-color: #ffd42a;
+}
+
+.uname_icon {
+    background-image: url(../img/login_name.png) !important;
+    background-repeat: no-repeat !important;
+    background-size: 20px auto !important;
+    padding-left: 30px !important;
+}
+
+.email_icon {
+    background-image: url(../img/login_email.png) !important;
+    background-repeat: no-repeat !important;
+    background-size: 25px auto !important;
+    padding-left: 30px !important;
+}
+
+.pwd_icon {
+    background-image: url(../img/login_password.png) !important;
+    background-repeat: no-repeat !important;
+    background-size: 20px auto !important;
+    padding-left: 30px !important;
+}
+
+.ui-input-text{ /* icon placeholder*/
+ color: #181a14 !important;
+ border-top: none !important;
+ border-left: none !important;
+ border-right:none !important;
+ border-color: #181a14 !important;
+}
+
+
+/* remove navbar separator*/
+.ui-navbar li .ui-btn .ui-btn-inner, .ui-navbar li .ui-btn {
+    border: 0 solid red !important;
+    box-shadow: none !important;
+}
+/*ganti icon*/
+.ui-arrow:after {
+    background-image: url(../img/google.png);
+    background-size: 15px 15px;
+}
+
+.ui-arrow-a:after {
+    background-image: url(../img/facebook.png);
+    background-size:15px 15px;
+}
+
+a:link {
+    text-decoration: none !important;
+}
+
+.mid_text {text-align: center !important}
+
+.padding_index{
+    padding-top: 50px;
+}
+

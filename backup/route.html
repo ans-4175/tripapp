@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>ROUTES</title>
+    <link rel="stylesheet" href="themes/koko2.min.css" />
+    <link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/jquery.mobile.structure-1.4.3.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <link rel="stylesheet" type="text/css" href="css/responsive.css" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <link rel="stylesheet" type="text/css" href="css/font/typo.css" />
+    <script src="js/modernizr.custom.js"></script>
+    <!--[if lt IE 9]>
+
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <nav class="cbp-spmenu cbp-spmenu-horizontal cbp-spmenu-bottom" id="pushmenu">
+      <div data-role="list-divider" id="listdiv">Pick Nearby Location ...</div>
+          <ul class="push-y" data-role="listview" id="listAdd">
+            
+          </ul>
+    </nav>
+    <div data-role="page">
+    	<div data-role="panel" id="myPanel"> 
+        <ul data-role="controlgroup">
+            <a onclick="pindahHal('now')" href="#" class="ui-btn">NOW</a></li>
+            <a onclick="pindahHal('browse')" href="#" class="ui-btn">BROWSE</a>
+            <a onclick="pindahHal('my_hops')" href="#" class="ui-btn">MY HOPS</a>
+            <a href="#" class="ui-btn">CREATE HOP</a>
+            <a onclick="pindahHal('recording')" href="#" class="ui-btn">RECORD HOP</a>
+            <a href="#" class="ui-btn">MY PLACE</a>
+            <a href="#" class="ui-btn">ACCOUNT</a>
+            <a href="#" class="ui-btn">TRAVEL BUDDIES</a>
+          </ul>
+      </div> 
+
+    	<div data-role="header" data-position="fixed">
+        <a href="#myPanel" data-icon="bars" data-iconpos="notext" data-shadow="false" data-iconshadow="false">Menu</a>
+        <h1>ROUTES</h1>
+      </div><!-- /header -->
+
+    	<div role="main" class="ui-content" id="main-body">
+       		<div id="main-map"></div>
+      </div>
+
+    	<div data-role="footer" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                <li><a onclick="pindahHal('browse')" href="#" class="ui-btn ui-shadow ui-btn-icon-left ui-custom-icon ui-arrow-ni ui-nodisc-icon">FIND NEARBY TRIPS</a></li>
+                <li><a id="add-archive" href="#" class="ui-btn ui-shadow ui-btn-icon-left ui-custom-icon ui-arrow-na ui-nodisc-icon ">ADD TO ARCHIVE</a></li>
+            </ul>
+          </div><!-- /navbar -->
+      </div><!-- /footer -->
+    </div><!-- /page -->
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/jquery.mobile-1.4.3.min.js"></script>
+    <script src="js/classie.js"></script>
+    <script src="js/functions.js"></script>
+    <script src="js/google.js"></script>
+    <script type="text/javascript">
+      var headerHeight,footerHeight,windowHeight;
+      var curLat, curLon;
+      var imaps = {map:null,marker:null,listmarkers:[]};
+      var pushmenu = document.getElementById('pushmenu');
+
+      //event click addto cari 4square
+      $('#add-archive').click(function() {
+        classie.toggle( pushmenu, 'cbp-spmenu-open' );
+        if(classie.has( pushmenu, 'cbp-spmenu-open' )){
+          //update list
+          listPlaceTo(curLat,curLon,'pushmenu','listAdd');
+        }
+      });
+      //
+
+      window.onload = function() {
+        //
+        headerHeight = $('#header').height();
+        footerHeight = $('#footer').height();
+        windowHeight = $(window).height();
+        $('#main-map').css('min-height', windowHeight - headerHeight - footerHeight);
+        //
+        if (navigator.geolocation) {
+          var idtrip = getValue('id');
+          navigator.geolocation.getCurrentPosition(function(position) {
+            curLat = position.coords.latitude;
+            curLon = position.coords.longitude;
+            //pindahin marker
+            if (imaps.map === null){
+              initRoute(imaps,'main-map',curLat, curLon,idtrip);
+            }
+          },function(error) {
+            console.log("Error occurred. Error code: " + error.code);
+          },{ frequency: 10000 });
+        };
+      };
+    </script>
+  </body>
+</html>

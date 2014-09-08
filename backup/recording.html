@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>RECORDING</title>
+    <link rel="stylesheet" href="themes/koko2.min.css" />
+    <link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/jquery.mobile.structure-1.4.3.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <link rel="stylesheet" type="text/css" href="css/font/typo.css" />
+    <script src="js/modernizr.custom.js"></script>
+    <!--[if lt IE 9]>
+
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div data-role="page">
+      <nav class="cbp-spmenu cbp-spmenu-horizontal cbp-spmenu-bottom" id="pushmenu">
+        <div data-role="list-divider" id="listdiv">Pick Nearby Location ...</div>
+            <ul class="push-y" data-role="listview" id="routeAdd">
+              
+            </ul>
+      </nav>
+      <!--nav class="cbp-spmenu cbp-spmenu-horizontal2 cbp-spmenu-bottom2" id="menuAdd">
+            <ul data-role="listview">
+              <div class="img_add">
+                <a href=""><img src="img/camera_circ-btn.png"></a>
+                <a href=""><img src="img/add_detail_circ-btn.png"></a>
+              </div>
+            </ul>
+      </nav-->
+      <nav class="cbp-spmenu cbp-spmenu-horizontal3 cbp-spmenu-bottom3" id="pushmenu2">
+            <p>Saving Trip</p>
+      </nav>
+      <div data-role="panel" id="myPanel"> 
+        <ul data-role="controlgroup">
+            <a onclick="pindahHal('now')" href="#" class="ui-btn">NOW</a></li>
+            <a onclick="pindahHal('browse')" href="#" class="ui-btn">BROWSE</a>
+            <a onclick="pindahHal('my_hops')" href="#" class="ui-btn">MY HOPS</a>
+            <a href="#" class="ui-btn">CREATE HOP</a>
+            <a onclick="pindahHal('recording')" href="#" class="ui-btn">RECORD HOP</a>
+            <a href="#" class="ui-btn">MY PLACE</a>
+            <a href="#" class="ui-btn">ACCOUNT</a>
+            <a href="#" class="ui-btn">TRAVEL BUDDIES</a>
+            <a onclick="logOut()" href="#" class="ui-btn">LOGOUT</a>
+          </ul>
+      </div> 
+
+    	<div data-role="header" data-position="fixed">
+        	<div class="headpage">
+        		<div><a href="#myPanel"><img class="side_menu" src="img/side_menu_btn.png"></a></div>
+        		<div class="browse_text">Recording Hop</div>
+     		</div><!-- /header -->
+     	</div>
+    	<div role="main" class="ui-content" id="main-body">
+       		<div id="main-map"></div>
+       		<div><img class="img_add" src="img/camera_circ-btn.png"></div>
+          <div><img class="img_add2" src="img/add_detail_circ-btn.png"></div>
+      </div>
+
+
+    	<div data-role="footer" data-position="fixed" id="footer">
+    		<div data-role="navbar">
+            <ul>
+                <li><a id="add-route" href="#" class="ui-btn" data-icon="false"><img class="img_nav" src="img/add_to_route.png">Add to Route</a></li>
+                <li><a id="finish" href="#" class="ui-btn" data-icon="false"><img class="img_nav" src="img/finish.png">Finish Rec</a></li>
+            </ul>
+        	</div><!-- /navbar -->
+          <a id="showFin" href="" class="bottom_menu"><img src="img/bottom_menu.png"></a>
+    	</div><!-- /footer -->
+    </div><!-- /page -->
+    <script src="js/jquery-1.10.2.min.js"></script>
+    <script src="js/jquery.mobile-1.4.2.min.js"></script>
+    <script src="js/functions.js"></script>
+    <script src="js/google.js"></script>
+    <script src="js/classie.js"></script>
+    <script type="text/javascript">
+      //init
+      var headerHeight,footerHeight,windowHeight;
+      var startRec, curLat, curLon;
+      var imaps = {map:null,marker:null,listmarkers:[]};
+      //
+      var pushmenu = document.getElementById('pushmenu');
+      var pushmenu2 = document.getElementById('pushmenu2');
+      //event click addto cari 4square
+      $('#add-route').click(function() {
+        classie.toggle( pushmenu, 'cbp-spmenu-open' );
+        if(classie.has( pushmenu, 'cbp-spmenu-open' )){
+          //update list
+          listRouteTo(curLat,curLon,'pushmenu','routeAdd');
+        }
+      });
+      $('#finish').click(function() {
+        classie.add( pushmenu2, 'cbp-spmenu-open' );
+        if(classie.has( pushmenu2, 'cbp-spmenu-open' )){
+          //save record
+          savingTrip(pushmenu2);
+        }
+      });
+      $('#showFin').click(function() {
+        alert('not yet implemented');
+      });
+      //
+      window.onload = function() {
+        //
+        headerHeight = $('#header').height();
+        footerHeight = $('#footer').height();
+        windowHeight = $(window).height();
+        $('#main-map').css('min-height', windowHeight - headerHeight - footerHeight);
+        //
+        if (localStorage.getItem("startRec") !== null) {
+          var baru = false;
+          if (confirm('Continue last record ?')) {
+              baru = false;
+          } else {
+              baru = true;
+              //save route to draft ?
+          }
+        }
+        if (navigator.geolocation) {
+          navigator.geolocation.watchPosition(function(position) {
+            curLat = position.coords.latitude;
+            curLon = position.coords.longitude;
+            if (baru) {
+              var startRec = [];
+              var rec1 = {
+                'lat': position.coords.latitude,
+                'lon': position.coords.longitude,
+                'time': getCurTime(),
+                'nama':'',
+                'kota':''
+              };
+              startRec.push(rec1);
+              console.log(startRec);
+              localStorage.setItem('startRec', JSON.stringify(startRec));
+              baru = false;
+            }
+            //pindahin marker
+            if (imaps.map === null)
+              initMap(imaps,'main-map',curLat, curLon);
+            else
+              setMarkerPosition(imaps, curLat, curLon);
+          },function(error) {
+            console.log("Error occurred. Error code: " + error.code);
+          },{ frequency: 10000 });
+        };
+      };
+    </script>
+              
+  </body>
+</html>

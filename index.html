@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>HOP</title>
+        <link rel="stylesheet" href="themes/koko2.min.css" />
+        <link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/jquery.mobile.structure-1.4.3.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/indexlogin.css" />
+        <link rel="stylesheet" type="text/css" href="css/main.css" />
+        <link rel="stylesheet" type="text/css" href="css/font/typo.css" />
+        <link rel="stylesheet" type="text/css" href="css/responsive.css">
+        <script src="js/modernizr.custom.js"></script>
+    <!--[if lt IE 9]>
+
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+    <body>
+        <div data-role="page" id="loginpage">
+        	<div data-role="header" data-position="fixed" class="headpage div-absolute" >
+            </div><!-- /header -->
+            
+            <div role="main" id="loginpage" data-role="ui-content">          
+                <div class="form_at">
+                    <div id="div-uname"><input class="uname_icon" id="txt-uname" type="text" name="username"  placeholder="username" data-clear-btn="true" data-shadow="false" ></div>
+                    <div id="div-email"><input class="email_icon" id="txt-email" type="text" name="email"  placeholder="email" data-clear-btn="true"></div>
+                    <div id="div-pwd"><input class="pwd_icon" id="txt-password" type="password" name="password" placeholder="password" value="" autocomplete="off" data-clear-btn="true"></div>
+                </div>
+
+                <div data-role="controlgroup" class="pad_aco" id="border_button">
+                    <a href="#" class="ui-btn" id="btn-create">CREATE ACCOUNT</a>
+                    <a href="#" class="ui-btn btn-na" id="tgl-create">CREATE ACCOUNT</a>
+                    <a href="#" class="ui-btn btn-na" id="registering">Trying to signup...</a>
+                    <a href="#" class="ui-btn" id="btn-login">LOG IN</a>
+                    <a href="#" class="ui-btn btn-na" id="tgl-login">LOG IN</a>
+                    <a href="#" class="ui-btn btn-na" id="logging">Trying to login...</a>
+                </div>
+             </div>
+        
+        <div data-role="footer" data-position="fixed" class="div-absolute">
+            <div data-role="navbar">
+            <ul>
+                <li><a href="#" id="btn-fb" class="custom_navbar"><img class="log-img" src="img/facebook.png"><p>LOG IN WITH<br />FACEBOOK</p></a></li>
+                <li><a href="#" id="btn-google" class="custom_navbar"><img class="log-img" src="img/google.png"><p>LOG IN WITH<br />GOOGLE</p></a></li>
+            </ul>
+            </div><!-- /navbar -->
+                </div><!-- /footer -->
+        </div><!-- /page -->
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/jquery.mobile-1.4.3.min.js"></script>
+    <script src="js/functions.js"></script>
+    <script type="text/javascript">
+        //
+        window.onload = function() {
+            //cek udah ada tanda login
+            if (localStorage.getItem("logged") === null) {
+                //stay belum login
+            }else{
+                //redirect ke now
+                pindahHal('browse');
+            }
+        }
+        //
+        var tglLogin = $('#tgl-login'),
+            btnLogin = $('#btn-login'),
+            tglCreate = $('#tgl-create'),
+            btnCreate = $('#btn-create'),
+            txtLog = $('#logging'),
+            txtReg = $('#registering'),
+            divEmail = $('#div-email'),
+            txtEmail = $('#txt-email'),
+            txtUname = $('#txt-uname'),
+            txtPassword = $('#txt-password');
+        //
+        tglCreate.hide();
+        btnLogin.hide();
+        txtLog.hide();
+        txtReg.hide();
+        //
+        function toggleBtn(){
+            tglLogin.toggle();
+            btnCreate.toggle();
+            tglCreate.toggle();
+            btnLogin.toggle();
+            divEmail.toggle();
+        }
+        //
+        btnLogin.click(function() {
+            //ajax to login
+            var uname = txtUname.val();
+            var pwd = txtPassword.val();
+            setLogin(uname,pwd,'logging');
+        });
+        btnCreate.click(function() {
+            var uname = txtUname.val();
+            var pwd = txtPassword.val();
+            var imel = txtEmail.val();
+            setSignUp(uname,pwd,imel,'registering')
+        });
+        tglLogin.click(function() {
+            toggleBtn();
+        });
+        tglCreate.click(function() {
+            toggleBtn();
+        });
+        $('#btn-fb').click(function(){
+            alert('not yet implemented');
+        });
+        $('#btn-google').click(function(){
+            alert('not yet implemented');
+        });
+    </script>
+    </body>
+</html>

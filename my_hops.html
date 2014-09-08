@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>My Hops</title>
+<link rel="stylesheet" href="themes/koko2.min.css" />
+<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+<link rel="stylesheet" type="text/css" href="css/jquery.mobile.structure-1.4.3.min.css" />
+<link rel="stylesheet" type="text/css" href="css/index.css" />
+<link rel="stylesheet" type="text/css" href="css/main.css" />
+<link rel="stylesheet" type="text/css" href="css/font/typo.css" />
+<link rel="stylesheet" type="text/css" href="css/responsive.css">
+<script src="js/modernizr.custom.js"></script>
+    <!--[if lt IE 9]>
+
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div data-role="page">
+    <nav class="cbp-spmenu cbp-spmenu-horizontal cbp-spmenu-bottom" id="menuSort">
+          <ul class="push-y" data-role="listview">
+            <li><div data-role="list-divider" id="listdiv">SORT BY</div></li>
+            <li class="list_sort"><a href="#" class="ui-btn ui-btn-icon-left ui-custom-icon ui-arrow-b ui-nodisc-icon">Rating</a></li>
+            <li><a href="#" class="ui-btn ui-btn-icon-left ui-custom-icon ui-arrow-d ui-nodisc-icon">Distance</a></li>
+            <li><a href="#" class="ui-btn ui-btn-icon-left ui-custom-icon ui-arrow-e ui-nodisc-icon">Cost</a></li>
+            <li><a href="#" class="ui-btn ui-btn-icon-left ui-custom-icon ui-arrow-f ui-nodisc-icon">Duration</a></li>
+          </ul>
+    </nav>
+
+    <nav class="cbp-spmenu cbp-spmenu-horizontal1 cbp-spmenu-bottom1" id="menuFind">
+          <ul data-role="listview" id="listGrup">
+            <li data-role="list-divider" id="listdiv">Filter By....</li>
+            <input data-iconpos="right "type="checkbox" name="edu" id="checkbox-v-2a" data-mini="true">
+            <label for="checkbox-v-2a"><img id="imgcek" style="margin-right:20px" src="img/cat_educational.png">Educational</label>
+            <input data-iconpos="right "type="checkbox" name="culi" id="checkbox-v-2b" data-mini="true">
+            <label for="checkbox-v-2b"><img id="imgcek" style="margin-right:20px" src="img/cat_culinary.png">Culinary</label>
+            <input type="checkbox" name="cult" id="checkbox-v-2c" data-iconpos="right" data-mini="true">
+            <label for="checkbox-v-2c"><img id="imgcek" style="margin-right:20px" src="img/cat_culture.png">Culture</label>
+            <input data-iconpos="right "type="checkbox" name="eco" id="checkbox-v-2d" data-mini="true">
+            <label for="checkbox-v-2d"><img id="imgcek" style="margin-right:20px" src="img/cat_economical.png">Economical</label>
+            <input data-iconpos="right "type="checkbox" name="fam" id="checkbox-v-2e" data-mini="true">
+            <label for="checkbox-v-2e"><img id="imgcek" style="margin-right:20px" src="img/cat_family.png">Family</label>
+            <input type="checkbox" name="his" id="checkbox-v-2f" data-iconpos="right" data-mini="true">
+            <label for="checkbox-v-2f"><img id="imgcek" style="margin-right:20px" src="img/cat_history.png">History</label>
+            <input data-iconpos="right "type="checkbox" name="nat" id="checkbox-v-2g" data-mini="true">
+            <label for="checkbox-v-2g"><img id="imgcek" style="margin-right:20px" src="img/cat_nature.png">Nature</label>
+            <input data-iconpos="right "type="checkbox" name="rom" id="checkbox-v-2h" data-mini="true">
+            <label for="checkbox-v-2h"><img id="imgcek" style="margin-right:20px" src="img/cat_romantic.png">Romantic</label>
+          </ul>
+    </nav>
+
+  <div data-role="panel" id="myPanel" data-display="push"> 
+      <ul data-role="controlgroup">
+            <a onclick="pindahHal('now')" href="#" class="ui-btn">NOW</a></li>
+            <a onclick="pindahHal('browse')" href="#" class="ui-btn">BROWSE</a>
+            <a onclick="pindahHal('my_hops')" href="#" class="ui-btn">MY HOPS</a>
+            <a href="#" class="ui-btn">CREATE HOP</a>
+            <a onclick="pindahHal('recording')" href="#" class="ui-btn">RECORD HOP</a>
+            <a href="#" class="ui-btn">MY PLACE</a>
+            <a href="#" class="ui-btn">ACCOUNT</a>
+            <a href="#" class="ui-btn">TRAVEL BUDDIES</a>
+            <a onclick="logOut()" href="#" class="ui-btn">LOGOUT</a>
+      </ul>
+  </div> 
+
+
+  <div data-role="header" data-position="fixed">
+      <div class="headpage">
+        <div><a href="#myPanel"><img class="side_menu" src="img/side_menu_btn.png"></a></div>
+        <div class="side_menu2"><a href="#"><img src="img/new_hop.png"></a></div>
+        <div class="ui-grid-a">
+              <div class="ui-block-a nav_hops"><a style="color:#000000 !important;" href=""><span class="mar_left">Created</span></a></div>
+              <div class="ui-block-b nav_hops"><a style="color:#000000 !important;" href=""><span class="mar_right">My Hops</span></a></div>
+        </div>
+      </div><!-- /header -->
+  </div>
+
+  <div role="main">
+      <ul data-role="listview" data-icon="false" id="content_browse">
+      </ul>
+  </div>
+
+  <div data-role="footer" data-position="fixed">
+    <div data-role="navbar">
+        <ul>
+            <li id="showSort" class="img_nav"><a href="#" class="ui-btn" data-icon="false"><img src="img/sort.png">SORT</a> </li>
+            <li id="showFind" class="img_nav"><a href="#" class="ui-btn" data-icon="false"><img src="img/find.png">FIND</a></li>
+        </ul>
+      </div><!-- /navbar -->
+  </div><!-- /footer -->
+    
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/jquery.mobile-1.4.3.min.js"></script>
+    <script src="js/functions.js"></script>
+    <script src="js/classie.js"></script>
+
+    <script type="text/javascript">
+      var logged = JSON.parse(localStorage.getItem('logged'));
+      var uid = logged.id;
+      var menuSort = document.getElementById('menuSort'),
+        showSort = document.getElementById('showSort');
+      var menuFind = document.getElementById('menuFind'),
+        showFind = document.getElementById('showFind');
+      showSort.onclick = function() {
+        classie.toggle( menuSort, 'cbp-spmenu-open' );
+        classie.remove( menuFind, 'cbp-spmenu-open' );
+      };
+      showFind.onclick = function() {
+        classie.toggle( menuFind, 'cbp-spmenu-open' );
+        classie.remove( menuSort, 'cbp-spmenu-open' );
+        if(!classie.has( menuFind, 'cbp-spmenu-open' )){
+          //update list
+          var checked = getCheckMulti('listGrup');
+          console.log(checked.join());
+          getMyListTrip(uid,checked.join());
+        }
+      };
+      //
+      var curLat, curLon;
+      window.onload = function() {
+        var checked = getCheckMulti('listGrup');
+        getMyListTrip(uid,checked.join());
+      };
+    </script>
+</div><!-- /page -->
+
+</body>
+</html>

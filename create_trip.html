@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Judul</title>
+<link rel="stylesheet" href="themes/koko2.min.css" />
+<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+<link rel="stylesheet" type="text/css" href="css/jquery.mobile.structure-1.4.3.min.css" />
+<!--link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.2.min.css" /-->
+<link rel="stylesheet" type="text/css" href="css/index.css" />
+<link rel="stylesheet" type="text/css" href="css/main.css" />
+<link rel="stylesheet" type="text/css" href="css/font/typo.css" />
+<link rel="stylesheet" type="text/css" href="css/responsive.css">
+<script src="js/modernizr.custom.js"></script>
+    <!--[if lt IE 9]>
+
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<div class="createpage" data-role="page">
+
+<div data-role="header" data-position="fixed">
+   <div class="headpage">
+      <div><a href="#myPanel"><img class="side_menu" src="img/back_btn.png"></a></div>
+      <div class="browse_text">Judul</div>
+    </div><!-- /header -->
+  </div>
+
+	<div role="main" id="view-content">
+      <!-- gambar utama & deskripsi -->
+   			<div class='view1'><div class="judul_new"><a style="color:white;" href="#popupJudul" data-rel="popup" data-transition="pop">New Trip</a></div>
+            <div class="add_pic"><a style="color:#ffffff !important;" href="">add main picture</a></div>
+            <div class="cat_img"><a style="color:#ffffff !important;" href="#popupCat" data-rel="popup" data-transition="pop">Tags</a></div>
+            <div class="map_img"><a href=""><img src="img/map_btn.png" /></a></div>
+        </div>
+      <div class="konten">
+
+        <div data-role="popup" id="popupJudul">
+        <form>
+           <input type="text" name="text-1" id="text-1" value="" placeholder="judul"  data-enhanced="true">
+        </form>
+        </div>
+
+        <div data-role="popup" id="popupCat">
+          <form>
+            <fieldset data-role="controlgroup">
+                    <input data-iconpos="right" type="checkbox" name="edu" id="checkbox-v-2a" >
+                    <label for="checkbox-v-2a"><img src="img/cat_educational.png">Educational</label>
+                    <input data-iconpos="right "type="checkbox" name="culi" id="checkbox-v-2b">
+                    <label for="checkbox-v-2b"><img src="img/cat_culinary.png">Culinary</label>
+                    <input type="checkbox" name="cult" id="checkbox-v-2c" data-iconpos="right" >
+                    <label for="checkbox-v-2c"><img src="img/cat_culture.png">Culture</label>
+                    <input data-iconpos="right "type="checkbox" name="eco" id="checkbox-v-2d">
+                    <label for="checkbox-v-2d"><img src="img/cat_economical.png">Economical</label>
+                    <input data-iconpos="right "type="checkbox" name="fam" id="checkbox-v-2e" >
+                    <label for="checkbox-v-2e"><img src="img/cat_family.png">Family</label>
+                    <input data-iconpos="right" type="checkbox" name="his" id="checkbox-v-2f">
+                    <label for="checkbox-v-2f"><img src="img/cat_history.png">History</label>
+                    <input data-iconpos="right "type="checkbox" name="nat" id="checkbox-v-2g">
+                    <label for="checkbox-v-2g"><img src="img/cat_nature.png">Nature</label>
+                    <input data-iconpos="right "type="checkbox" name="rom" id="checkbox-v-2h">
+                    <label for="checkbox-v-2h"><img src="img/cat_romantic.png">Romantic</label>
+                    <div class="tombolPopup"><a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-a lebar50" data-rel="back">Cancel</a>
+                    <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-a lebar50">Done</a></div>
+          </fieldset>
+          </form>
+        </div>
+
+<div data-role="popup" id="popupBring">
+  <form>
+    <fieldset data-role="controlgroup">
+            <input data-iconpos="right "type="checkbox" name="edu" id="checkbox-v-2i" data-mini="true">
+            <label for="checkbox-v-2i"><img  src="img/bring_cash.png">Cash</label>
+            <input data-iconpos="right "type="checkbox" name="culi" id="checkbox-v-2j" data-mini="true">
+            <label for="checkbox-v-2j"><img  src="img/bring_camera.png">Camera</label>
+            <input type="checkbox" name="cult" id="checkbox-v-2k" data-iconpos="right" data-mini="true">
+            <label for="checkbox-v-2k"><img  src="img/bring_food.png">Food</label>
+            <input data-iconpos="right "type="checkbox" name="eco" id="checkbox-v-2l" data-mini="true">
+            <label for="checkbox-v-2l"><img  src="img/bring_high_heels.png">No High Heels</label>
+            <input data-iconpos="right "type="checkbox" name="fam" id="checkbox-v-2m" data-mini="true">
+            <label for="checkbox-v-2m"><img  src="img/bring_picnic_mat.png">Picnic Mat</label>
+            <input type="checkbox" name="his" id="checkbox-v-2n" data-iconpos="right" data-mini="true">
+            <label for="checkbox-v-2n"><img  src="img/bring_water.png">Water</label>
+            </fieldset>
+        </form>
+               <div class="tombolPopup"><a href="#" class="ui-btn ui-corner-all ui-btn-inline ui-btn-a lebar50" data-rel="back">Cancel</a>
+                <a href="#" class="ui-btn ui-corner-all ui-btn-inline ui-btn-a lebar50">Done</a></div>
+      </div> 
+
+      <div data-role="popup" id="popupJam">
+              <div class="waktu_mulai"><img src="img/time.png"><span class="mulai_text">start time</span></div>
+              <div class="dina_text">10:05</div>
+              <div class="waktu_akhir"><img src="img/time.png"><span class="end_text">end time</span></div>
+              <div class="dina_text"> 18:14</div>
+              <div class="tombolPopup"><a href="#" class="ui-btn ui-corner-all ui-btn-inline ui-btn-a lebar50" data-rel="back">Cancel</a>
+                <a href="#" class="ui-btn ui-corner-all ui-btn-inline ui-btn-a lebar50">Done</a></div>
+      </div> 
+
+      <div data-role="popup" id="popupTiket">
+              <div><img src="img/ticket.png"> ticket</div>
+              <div>Rp.<span class="dina_text">15.000</span></div>
+              <div><img src="img/food_bev.png">food & bev</div>
+              <div>Rp.<span class="dina_text">15.000</span></div>
+              <div><img src="img/rent.png"> rent</div>
+              <div>Rp.<span class="dina_text">15.000</span></div>
+               <div class="tombolPopup"><a href="#" class="ui-btn ui-corner-all ui-btn-inline ui-btn-a lebar50" data-rel="back">Cancel</a>
+                <a href="#" class="ui-btn ui-corner-all ui-btn-inline ui-btn-a lebar50">Done</a></div>
+      </div> 
+
+      <div data-role="popup" id="popupVeh">
+              <div class="text_popveh"> pick a vehicle</div>
+              <img src="img/vehcl_bus_inact.png"><img src="img/vehcl_private_inact.png"><img src="img/vehcl_taxi_inact.png"><img src="img/vehcl_walk_inact.png"><img src="img/vehcl_bike_inact.png">
+              <div class="judul_veh">
+              <form>
+              <input type="text" name="text-1" id="text-1" value="" placeholder="judul"  data-enhanced="true">
+            </form>
+            </div>
+              <div class="tombolPopup"><a href="#" class="ui-btn ui-corner-all ui-btn-inline ui-btn-a lebar50" data-rel="back">Cancel</a><a href="#" class="ui-btn ui-corner-all ui-btn-inline ui-btn-a lebar50">Done</a></div>
+
+      </div>
+
+
+        <div class="textarea_ket">
+          <form>
+              <textarea cols="40" rows="8" name="textarea-6" placeholder="Keterangan" ></textarea>
+          </form>
+        </div>
+
+        <div class="popjam">
+          <a style="color:#000 !important;" href="#popupJam" data-rel="popup" data-transition="pop"><img src="img/time.png"><span class="dina_text">8</span>h<span class="dina_text">14</span>m</a>
+        </div>
+        <div class="separator"></div>
+
+        <div class="poptiket"><a style="color:#000 !important;" href="#popupTiket" data-rel="popup" data-transition="pop"><img src="img/ticket.png"><span>what to buy</span></a></div>
+
+       <div class="separator"></div>
+
+        <div class="popbring"><a style="color:#000 !important;" href="#popupBring" data-rel="popup" data-transition="pop"> <img src="img/bring_cash_gray.png"><span>what to bring</span></a></div>
+
+        <div class="separator"></div>
+
+        <div class="popveh"><a style="color:#000 !important;" href="#popupVeh" data-rel="popup" data-transition="pop"><img src="img/vehcl_bus_inact.png"><span>what vehicle</span></a></div>
+        <div> <div class="textarea_ket">
+          <form>
+              <textarea cols="40" rows="8" name="textarea-6" placeholder="Keterangan" ></textarea>
+          </form>
+        </div></div>
+
+	<div data-role="footer" data-position="fixed">
+		<div data-role="navbar">
+        <ul>
+            <li id="showSort" class="img_nav"><a href="#" data-icon="false"><img src="img/add.png">Add Place</a> </li></ul>
+    	</div><!-- /navbar -->
+
+	</div><!-- /footer -->
+  </div>
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/functions.js"></script>
+    <script src="js/classie.js"></script>
+    <script src="js/jquery.mobile-1.4.3.min.js"></script>
+    <script type="text/javascript">
+      window.onload = function() {
+        var idtrip = getValue('id');
+        getTrip(idtrip);
+      }
+    </script>
+</div><!-- /page -->
+</body>
+</html>

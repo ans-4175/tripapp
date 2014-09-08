@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Browse</title>
+<link rel="stylesheet" href="themes/koko2.min.css" />
+<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+<link rel="stylesheet" type="text/css" href="css/jquery.mobile.structure-1.4.3.min.css" />
+<link rel="stylesheet" type="text/css" href="css/index.css" />
+<link rel="stylesheet" type="text/css" href="css/main.css" />
+<link rel="stylesheet" type="text/css" href="css/font/typo.css" />
+<link rel="stylesheet" type="text/css" href="css/responsive.css">
+<script src="js/modernizr.custom.js"></script>
+    <!--[if lt IE 9]>
+
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div data-role="page">
+	<div data-role="panel" id="myPanel"> 
+   	<ul data-role="controlgroup">
+   			<a onclick="pindahHal('now')" href="#" class="ui-btn">NOW</a></li>
+        <a onclick="pindahHal('browse')" href="#" class="ui-btn">BROWSE</a>
+        <a href="#" class="ui-btn">MY HOPS</a>
+        <a href="#" class="ui-btn">CREATE HOP</a>
+        <a onclick="pindahHal('recording')" href="#" class="ui-btn">RECORD HOP</a>
+        <a href="#" class="ui-btn">MY PLACE</a>
+        <a href="#" class="ui-btn">ACCOUNT</a>
+        <a href="#" class="ui-btn">TRAVEL BUDDIES</a>
+    </ul>
+  </div> 
+
+
+	<div data-role="header" data-position="fixed">
+   <div class="headpage">
+      <div><a href="#myPanel"><img class="side_menu" src="img/side_menu_btn.png"></a></div>
+      <div class="browse_text">Travel Buddies</div>
+    </div><!-- /header -->
+  </div>
+    
+	<div role="main">
+    <div class="tbud">
+        <div class="ui-block-a"><div class="circleBase type1"></div></div>
+        <div class="ui-block-b"><div class="circleBase type1"></div></div>
+        <div class="ui-block-c"><div class="circleBase type1"></div></div>
+        <div style="clear:both"></div>
+    </div>
+  </div>
+
+	<div data-role="footer" data-position="fixed"> 
+		<div data-role="navbar">
+        <ul>
+            <li id="showSort"><a href="#" class="ui-btn" data-icon="false">cancel</a></li>
+            <li id="showFind"><a href="#" class="ui-btn" data-icon="false">done</a></li>
+        </ul>
+    	</div><!-- /navbar -->
+	</div><!-- /footer -->
+    
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/jquery.mobile-1.4.3.min.js"></script>
+    <script src="js/functions.js"></script>
+    <script src="js/classie.js"></script>
+
+</div><!-- /page -->
+</body>
+</html>

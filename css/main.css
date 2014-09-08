@@ -1,0 +1,64 @@
+html, body {
+    height: 100%;
+}
+#header{
+	height: 40px;
+}
+#footer{
+	height: 30px;
+}
+#main-map{
+   margin:-20px -20px 0 -20px;
+}
+
+.ui-arrow-ni:after {
+    background-image: url(../img/find_nearby.png);
+    background-size: 15px 15px;
+}
+
+.ui-arrow-na:after {
+    background-image: url(../img/add_to_archive.png);
+    background-size: 15px 15px;
+}
+
+.ui-arrow-ri:after {
+    background-image: url(../img/add_to_route.png);
+    background-size: 15px 15px;
+}
+
+.ui-arrow-ra:after {
+    background-image: url(../img/add_to_archive.png);
+    background-size: 15px 15px;
+}
+.btn-na{
+	background-color: #e9e9e9 !important;
+}
+
+.log-img{
+	height: 25px;
+	width:auto;
+}
+.div-absolute{
+	position: absolute !important;
+}
+
+#pushmenu{
+    background: #EDEDED;
+    padding: 15px;
+    font-size: 12pt;
+    line-height: 16pt;
+    color: #181A14;
+}
+.pushtitle{
+    border-bottom : solid 1px #EDEDED;
+}
+.pushlist{
+    overflow-y: auto;
+}
+.fsqlist{
+    
+}
+.push-y{
+    height: 150px;
+    overflow-y: auto;
+}

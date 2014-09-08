@@ -1,0 +1,298 @@
+
+/* Stack all blocks to start */
+
+.rwd2 .ui-block-a,
+.rwd2 .ui-block-b,
+.rwd2 .ui-block-c,
+.rwd2 .ui-block-d,
+.rwd2 .ui-block-e {
+    width: 100%;
+    float: none;
+}
+
+.rwd3 .ui-block-a,
+.rwd3 .ui-block-b,
+.rwd3 .ui-block-c,
+.rwd3 .ui-block-d,
+.rwd3 .ui-block-e {
+    width: 100%;
+    float: none;
+}
+
+.rwd4 .ui-block-a,
+.rwd4 .ui-block-b{
+    width: 100%;
+    float: none;
+}
+
+.rwd6 .ui-block-a,
+.rwd6 .ui-block-b,
+.rwd6 .ui-block-c{
+    width: 100%;
+    float: none;
+}
+
+.rwd7 .blok-a,
+.rwd7 .blok-b,
+.rwd7 .blok-c,
+.rwd7 .blok-d,
+.rwd7 .blok-e,
+.rwd7 .blok-f{
+    width: 100%;
+    float: none;
+}
+
+.rwd8 .blok-a,
+.rwd8 .blok-b,
+.rwd8 .blok-c,
+.rwd8 .blok-d,
+.rwd8 .blok-e,
+.rwd8 .blok-f,
+.rwd8 .blok-g,
+.rwd8 .blok-h,
+.rwd8 .blok-i,
+.rwd8 .blok-j,
+.rwd8 .blok-k,
+.rwd8 .blok-l,
+.rwd8 .blok-m,
+.rwd8 .blok-n,
+.rwd8 .blok-o,
+.rwd8 .blok-p,
+.rwd8 .blok-q,
+.rwd8 .blok-r,
+.rwd8 .blok-s{
+    width: 100%;
+    float: none;
+}
+
+.rwd9 .blok-a,
+.rwd9 .blok-b{
+  width: 100%;
+  float:none;
+  text-align: center;
+}
+
+.tbud .ui-block-a,
+.tbud .ui-block-b,
+.tbud .ui-block-c{
+  width: 100%;
+  float:none;
+  text-align: center;
+}
+
+
+
+/* 1st breakpoint */
+@media all and (min-width: 280px) {
+
+    /* text-utama */
+    
+    /*jam utama */
+
+    .rwd2 {
+      overflow: hidden;
+      height: 40px;
+      margin-left : 10px;
+    }  
+
+    .dina_text{font-size: 20px;
+    color:#fc7100;
+    margin-right: 2px;
+    margin-left: 2px;}
+
+    .stat_text {margin-top: 8px;
+    margin-right: 8px;}
+
+    .rwd2 .ui-block-a, .rwd2 .ui-block-e{
+      float:left;
+      width :15%;
+    }
+
+    .rwd2 .ui-block-b, .rwd2 .ui-block-c,.rwd2 .ui-block-d{
+      float :left;
+      width: 10%;
+    }
+
+    .rwd2 img{
+      height:30px;
+      width: auto;
+    }
+
+/* harga utama */
+    
+    .rwd3 {
+      overflow: hidden;
+      height: 40px;
+      margin-left : 10px;
+    }  
+
+    .rwd3 .ui-block-a,.rwd3 .ui-block-d{
+      float:left;
+      width :12%;
+    }
+
+    .rwd3 .ui-block-b,.rwd3 .ui-block-e{
+      float:left;
+      width:25%;
+    }
+    .rwd3 .ui-block-c { float: left;
+      width: 15%;}
+
+    .rwd3 img{
+      max-height: 30px;
+      max-width: 30px;
+    }
+
+    /* vehicle */
+    .rwd4 {
+      overflow: hidden;
+      height: 40px;
+      margin-left : 10px;
+      margin-top: 15px;
+    }  
+
+    .rwd4 .ui-block-a{
+      float:left;
+      width :15%;
+    }
+
+    .rwd4 img{
+      max-height: 30px;
+      max-width: 30px;
+    }
+
+    /* comment */
+
+    .rwd6 {
+      overflow: hidden;
+      height: 70px;
+      margin-left: 10px;
+    }  
+
+    .rwd6 .ui-block-a{
+      float:left;
+      width :20%;
+    }
+    .rwd6 .ui-block-b,.rwd6 .ui-block-c{
+      float:left;
+      width :15%;
+    }
+    .rwd6 img{
+      max-height: 30px;
+      max-width: 30px;
+    }
+    
+
+    .rwd7 .blok-a,.rwd7 .blok-b,.rwd7 .blok-c,.rwd7 .blok-d,.rwd7 .blok-e,.rwd7 .blok-f{
+      float:left;
+      width :33%;
+      text-align: center;
+    }
+
+    .rwd7 img{
+      height: 20px;
+      width: auto;
+    }
+    /* image badges*/
+    .rwd8{
+
+      margin-top: 10px;
+    }
+    .rwd8 .blok-a,
+    .rwd8 .blok-b,
+    .rwd8 .blok-c,
+    .rwd8 .blok-d,
+    .rwd8 .blok-e,
+    .rwd8 .blok-f,
+    .rwd8 .blok-g,
+    .rwd8 .blok-h,
+    .rwd8 .blok-i,
+    .rwd8 .blok-j,
+    .rwd8 .blok-k,
+    .rwd8 .blok-l,
+    .rwd8 .blok-m,
+    .rwd8 .blok-n,
+    .rwd8 .blok-o,
+    .rwd8 .blok-p,
+    .rwd8 .blok-q,
+    .rwd8 .blok-r,
+    .rwd8 .blok-s{
+    width: 20%;
+    float: left;
+    }
+
+    .rwd8 img{
+      height: 50px;
+      width: auto;
+    }
+
+    
+    .type2 {
+    width: 50px;
+    height: 50px;
+    background-image: url(../img/q.jpg);
+    background-size: 100% 100%;
+    border: none;
+    margin-left: auto;
+    margin-right: auto;
+      }
+
+    .text-angka {font-size: 50px;
+      margin-top: 0px;
+      margin-bottom: 0px;}
+    
+    .text-name {
+      margin-top: 0px;
+      margin-bottom: 0px;}
+    
+    .image_view{
+    margin: 20px;
+    }
+    
+    .rwd9 .blok-a,.rwd9 .blok-b{
+      float:right;
+      width :45%;
+      margin-top: 10px;
+    }
+
+    .tbud .ui-block-a,
+    .tbud .ui-block-b,
+    .tbud .ui-block-c{
+      width: 33%;
+      float:left;
+    }
+
+}
+
+/* 2nd breakpoint - Float all, 50/25/25 */
+@media all and (min-width: 55em) {
+    .rwd1 .ui-body {
+       min-height: 18em;
+    }
+    .rwd1 .ui-block-a,
+    .rwd1 .ui-block-c {
+      float: left;
+      width: 49.95%;
+    }
+    .rwd1 .ui-block-b,
+    .rwd1 .ui-block-c {
+      float: left;
+      width: 24.925%;
+    }
+}
+/* 3rd breakpoint - Bump up font size at very wide screens */
+@media all and (min-width: 75em) {
+    .rwd1 .ui-body {
+      font-size: 125%;
+    }
+    .rwd1 .ui-block-a,
+    .rwd1 .ui-block-c {
+      float: left;
+      width: 49.95%;
+    }
+    .rwd1 .ui-block-b,
+    .rwd1 .ui-block-c {
+      float: left;
+      width: 24.925%;
+    }
+}

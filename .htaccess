@@ -1,0 +1,44 @@
+############ compress text, HTML, JavaScript, CSS, and XML
+AddOutputFilterByType DEFLATE text/plain
+AddOutputFilterByType DEFLATE text/html
+AddOutputFilterByType DEFLATE text/xml
+AddOutputFilterByType DEFLATE text/css
+AddOutputFilterByType DEFLATE application/xml
+AddOutputFilterByType DEFLATE application/xhtml+xml
+AddOutputFilterByType DEFLATE application/rss+xml
+AddOutputFilterByType DEFLATE application/javascript
+AddOutputFilterByType DEFLATE application/x-javascript
+# remove browser bugs
+BrowserMatch ^Mozilla/4 gzip-only-text/html
+BrowserMatch ^Mozilla/4\.0[678] no-gzip
+BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+############
+
+#######Vary Header
+<IfModule mod_headers.c>
+  <FilesMatch "\.(js|css|xml|gz)$">
+    Header append Vary: Accept-Encoding
+  </FilesMatch>
+</IfModule>
+#######Vary Header
+
+## EXPIRES CACHING ##
+<IfModule mod_expires.c>
+ExpiresActive On
+##IMAGE
+ExpiresByType image/jpg "access plus 15 days"
+ExpiresByType image/jpeg "access plus 15 days"
+ExpiresByType image/gif "access plus 15 days"
+ExpiresByType image/png "access plus 15 days"
+##COMPONENTS
+ExpiresByType text/css "access plus 1 month"
+ExpiresByType text/javascript "access plus 1 month"
+ExpiresByType text/x-javascript "access plus 1 month"
+ExpiresByType application/javascript "access plus 1 month"
+ExpiresByType application/x-shockwave-flash "access plus 1 month"
+ExpiresByType application/pdf "access plus 1 month"
+ExpiresByType image/x-icon "access plus 1 year"
+##DEFAULT
+ExpiresDefault "access plus 2 days"
+</IfModule>
+## EXPIRES CACHING ##
