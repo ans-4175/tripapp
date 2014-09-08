@@ -1,5 +1,4 @@
 //initiate
-$('[data-position=fixed]').fixedtoolbar({ tapToggle:false});
 // Functions
 function toObject(arr) {
   var rv = {};
@@ -292,6 +291,74 @@ function initMap(imaps,divid,lat,lon) {
               alert("Nothing trips nearby right now");
           }
       }, "json");
+    }
+
+    function sortListTrip(filters){
+      //save to storage
+      var resps = JSON.parse(localStorage.getItem('browselist'));
+      //
+      switch (filters){
+        case 1:
+          resps.sort(function(a, b){
+              if(a.ratings > b.ratings) return -1;
+              if(a.ratings < b.ratings) return 1;
+              return 0;
+          });
+          break;
+        case 2:
+          resps.sort(function(a, b){
+              if(a.rating_jarak > b.rating_jarak) return -1;
+              if(a.rating_jarak < b.rating_jarak) return 1;
+              return 0;
+          });
+          break;
+        case 3:
+          resps.sort(function(a, b){
+              if(a.rating_dana > b.rating_dana) return -1;
+              if(a.rating_dana < b.rating_dana) return 1;
+              return 0;
+          });
+          break;
+        case 4:
+          resps.sort(function(a, b){
+              if(a.rating_duration > b.rating_duration) return -1;
+              if(a.rating_duration < b.rating_duration) return 1;
+              return 0;
+          });
+          break;
+        default:
+          resps.sort(function(a, b){
+              if(a.idTrip > b.idTrip) return -1;
+              if(a.idTrip < b.idTrip) return 1;
+              return 0;
+          });
+          break;
+      }
+      //tampilkan
+      var strContent = "";
+      for (key in resps){
+        strContent += "<li><a onclick='pindahView("+resps[key].idTrip+")' href='#'><div class='browse1'><p>"+resps[key].judul+"</p><div class='circleBase type1'></div><div class='ratingc'>";
+          //cost
+          strContent += "<div>";
+          for (var b=1; b<=5; b++){
+            strContent += (b<=resps[key].rating_dana) ? "<img src='img/cost.png'>" : "";
+          }
+          strContent += "</div>";
+          //rating
+          strContent += "<div>";
+          for (var b=1; b<=5; b++){
+            strContent += (b<=resps[key].ratings) ? "<img src='img/rate.png'>" : "";
+          }
+          strContent += "</div>";
+          //distance
+          strContent += "<div>";
+          for (var b=1; b<=5; b++){
+            strContent += (b<=resps[key].rating_jarak) ? "<img src='img/distance.png'>" : "";
+          }
+          strContent += "</div>";
+        strContent += "</div><div id='mapbtn'><img src='img/map_btn.png'></div></div></a></li>";
+      }
+      $("#content_browse").html(strContent);
     }
 
     function getMyListTrip(uid,filters){

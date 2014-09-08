@@ -20,12 +20,12 @@
 <body>
 <div data-role="page">
     <nav class="cbp-spmenu cbp-spmenu-horizontal cbp-spmenu-bottom" id="menuSort">
-          <ul class="push-y" data-role="listview">
+          <ul class="push-y sortmenu" data-role="listview">
             <li><div data-role="list-divider" id="listdiv">SORT BY</div></li>
-            <li class="list_sort"><a href="#" class="ui-btn ui-btn-icon-left ui-custom-icon ui-arrow-b ui-nodisc-icon">Rating</a></li>
-            <li><a href="#" class="ui-btn ui-btn-icon-left ui-custom-icon ui-arrow-d ui-nodisc-icon">Distance</a></li>
-            <li><a href="#" class="ui-btn ui-btn-icon-left ui-custom-icon ui-arrow-e ui-nodisc-icon">Cost</a></li>
-            <li><a href="#" class="ui-btn ui-btn-icon-left ui-custom-icon ui-arrow-f ui-nodisc-icon">Duration</a></li>
+            <li class="list_sort"><a href="#" onclick="sortListTrip(1)" class="ui-btn ui-btn-icon-left ui-custom-icon ui-arrow-b ui-nodisc-icon">Rating</a></li>
+            <li class="list_sort"><a onclick="sortListTrip(2)" href="#" class="ui-btn ui-btn-icon-left ui-custom-icon ui-arrow-d ui-nodisc-icon">Distance</a></li>
+            <li class="list_sort"><a onclick="sortListTrip(3)" href="#" class="ui-btn ui-btn-icon-left ui-custom-icon ui-arrow-e ui-nodisc-icon">Cost</a></li>
+            <li class="list_sort"><a href="#" onclick="sortListTrip(4)" class="ui-btn ui-btn-icon-left ui-custom-icon ui-arrow-f ui-nodisc-icon">Duration</a></li>
           </ul>
     </nav>
 
@@ -54,21 +54,20 @@
 
 	<div data-role="panel" id="myPanel" data-display="push"> 
    		<ul data-role="controlgroup">
-   			    <a onclick="pindahHal('now')" href="#" class="ui-btn">NOW</a></li>
-            <a onclick="pindahHal('browse')" href="#" class="ui-btn">BROWSE</a>
-            <a onclick="pindahHal('my_hops')" href="#" class="ui-btn">MY HOPS</a>
-            <a href="#" class="ui-btn">CREATE HOP</a>
-            <a onclick="pindahHal('recording')" href="#" class="ui-btn">RECORD HOP</a>
-            <a href="#" class="ui-btn">MY PLACE</a>
-            <a href="#" class="ui-btn">ACCOUNT</a>
-            <a href="#" class="ui-btn">TRAVEL BUDDIES</a>
-            <a onclick="logOut()" href="#" class="ui-btn">LOGOUT</a>
-            </ul>
+		    <a onclick="pindahHal('now')" href="#" class="ui-btn">NOW</a></li>
+        <a onclick="pindahHal('browse')" href="#" class="ui-btn">BROWSE</a>
+        <a onclick="pindahHal('my_hops')" href="#" class="ui-btn">MY HOPS</a>
+        <a href="#" class="ui-btn">CREATE HOP</a>
+        <a onclick="pindahHal('recording')" href="#" class="ui-btn">RECORD HOP</a>
+        <a href="#" class="ui-btn">MY PLACE</a>
+        <a href="#" class="ui-btn">ACCOUNT</a>
+        <a href="#" class="ui-btn">TRAVEL BUDDIES</a>
+        <a onclick="logOut()" href="#" class="ui-btn">LOGOUT</a>
+      </ul>
   </div> 
 
-
-	<div data-role="header" data-position="fixed"  data-tap-toggle="false">
-   <div class="headpage">
+	<div data-role="header" data-position="fixed" data-tap-toggle="false">
+    <div class="headpage">
       <div><a href="#myPanel"><img class="side_menu" src="img/side_menu_btn.png"></a></div>
       <div class="browse_text">Browse</div>
     </div><!-- /header -->
@@ -80,8 +79,8 @@
       </ul>
   </div>
 
-	<div data-role="footer" data-position="fixed"  data-tap-toggle="false"> 
-		<div data-role="navbar">
+	<div data-role="footer" data-position="fixed" data-tap-toggle="false" data-fullscreen="false"> 
+		<div data-role="navbar" data-tap-toggle="false" data-fullscreen="false">
         <ul>
             <li id="showSort" class="img_nav"><a href="#" class="ui-btn" data-icon="false"><img  src="img/sort.png">SORT</a> </li>
             <li id="showFind" class="img_nav"><a href="#" class="ui-btn" data-icon="false"><img  src="img/find.png">FIND</a></li>
