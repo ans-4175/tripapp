@@ -1,0 +1,5 @@
+10/9/14
++page demo
+
+-geser klik arrow belum touch
+-ada layout putih dibawah

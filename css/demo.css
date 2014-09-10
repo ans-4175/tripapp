@@ -1,0 +1,238 @@
+body, input, select, textarea, button, .ui-btn {font-family: 'ostrich_sansmedium' !important;}
+
+.ui-overlay-a, .ui-page-theme-a, .ui-page-theme-a .ui-panel-wrapper,.ui-btn {
+    text-shadow: none !important;
+}
+@font-face {
+    font-family: 'ostrich_sanscondensed_light';
+    src: url('ostrich-light-webfont.eot');
+    src: url('ostrich-light-webfont.eot?#iefix') format('embedded-opentype'),
+    url('ostrich-light-webfont.woff2') format('woff2'),
+    url('ostrich-light-webfont.woff') format('woff'),
+    url('ostrich-light-webfont.ttf') format('truetype'),
+    url('ostrich-light-webfont.svg#ostrich_sanscondensed_light') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+.form_at {/*padding buat login*/
+    width: 70%;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#border_button{
+	margin-top: 20px;
+}
+
+.ui-header, .ui-footer {
+ border-width: 0 0 !important;
+}
+
+.headpage {
+	height: 480px;
+	background-image: url(../img/page1.png);
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+.hop_logo{
+    position: relative;    
+    top: 50px;   
+}
+.logo_underline{
+    position: relative;
+    top: 65px;
+}
+.logo_underline_2{
+    position: relative;
+    top: 200px;
+}
+.sub_text{
+    position: relative;
+    top:40px;
+    font-family: 'ostrich_sanscondensed_light'!important;
+    font-size: 150%;
+    color: white;
+    text-align: center;  
+}
+.sub_text_bottom{
+ position: relative;
+ top: 65px;
+ padding: 10px;
+ border: 1px solid white; 
+ border-radius: 5px;  
+ display: inline;
+}
+.slider{
+  position: relative;
+}
+
+.slide{
+    display: none;
+}
+.active-slide{
+    display: block;
+}
+.page-one{
+    height: 480px;
+    background-image: url(../img/page1.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+.page-two{
+    height: 480px;
+    background-image: url(../img/page2.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+.page-three{
+    height: 480px;
+    background-image: url(../img/page3.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+.page-four{
+    height: 480px;
+    background-image: url(../img/page4.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+.container{    
+    font-size: 150%;    
+    font-family: 'ostrich_sanscondensed_light'!important;
+    color: white;
+    text-align: center;    
+}
+.container img{
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+.pic-icon{
+    position: relative;
+    top: 250px;
+}
+.text-top{
+    position: relative;
+    top: 50px;
+    font-size: 20pt;
+}
+.title{
+    position: relative;
+    top: 230px;
+    font-size: 24pt;
+}
+.sub-title{
+    position: relative;
+    top: 160px;
+    font-size: 10pt;
+}
+.description{
+    width: 200px;
+    margin:0 auto;
+}
+.getstarted{
+    width: 140px;
+    margin:0 auto;
+    border: 1px solid white; 
+    border-radius: 5px;  
+    position: relative;
+    top:80px;
+}
+
+.text-bottom{     
+    padding: 10px;  
+    display: inline;
+    font-size: 20pt;
+}
+.slider-nav{
+    position: relative;
+    top: -40px;
+    left: 105px;
+    text-align: center;
+    margin-top: 20px;   
+    display: inline;
+}
+.arrow-prev{
+    display: inline;
+}
+.arrow-next{
+    display: inline;
+}
+.slider-dots{
+    list-style: none;
+    display: inline;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+.slider-dots li{
+    color: #bbbcbc;
+    display: inline;
+    font-size: 30px;
+    margin-right: 5px;
+}
+.slider-dots li.active-dot {
+  color: #FC7A10;
+}
+#border_button .ui-btn {
+    border: none !important;
+    background-color: #ffd42a;
+}
+
+.uname_icon {
+    background-image: url(../img/login_name.png) !important;
+    background-repeat: no-repeat !important;
+    background-size: 20px auto !important;
+    padding-left: 30px !important;
+}
+
+.email_icon {
+    background-image: url(../img/login_email.png) !important;
+    background-repeat: no-repeat !important;
+    background-size: 25px auto !important;
+    padding-left: 30px !important;
+}
+
+.pwd_icon {
+    background-image: url(../img/login_password.png) !important;
+    background-repeat: no-repeat !important;
+    background-size: 20px auto !important;
+    padding-left: 30px !important;
+}
+
+.ui-input-text{ /* icon placeholder*/
+   color: #181a14 !important;
+   border-top: none !important;
+   border-left: none !important;
+   border-right:none !important;
+   border-color: #181a14 !important;
+}
+
+
+/* remove navbar separator*/
+.ui-navbar li .ui-btn .ui-btn-inner, .ui-navbar li .ui-btn {
+    border: 0 solid red !important;
+    box-shadow: none !important;
+}
+/*ganti icon*/
+.ui-arrow:after {
+    background-image: url(../img/google.png);
+    background-size: 15px 15px;
+}
+
+.ui-arrow-a:after {
+    background-image: url(../img/facebook.png);
+    background-size:15px 15px;
+}
+
+a:link {
+    text-decoration: none !important;
+}
+
+.mid_text {text-align: center !important}
+
+.padding_index{
+    padding-top: 50px;
+}
+
