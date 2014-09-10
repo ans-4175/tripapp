@@ -249,11 +249,8 @@ a:link {
 }
 
 /* style buat view */
-.text-veh{
-    white-space:normal !important;
-    margin-left: 5px !important;
-    font-size: 11pt;
-}
+.text-veh{white-space:normal !important;
+margin-left: 5px !important;}
 
 .text-com2{margin: auto;}
 
@@ -333,28 +330,18 @@ right: 15px !important;
 .cat_img{   position:absolute;
             bottom: 5px;
             left:10px;
-            font-size: 13pt;
-            max-height: 200px;
+            max-height: 150px;
             overflow: hidden;}
 .cat_img img{
-            height: 15px;
+            height: 30px;
             width: auto;}
 
-.map_img {   position:absolute;
+.map_img{   position:absolute;
             bottom: 5px;
-            right:10px;
-}
-.gal_img {   position:absolute;
-            bottom: 40px;
-            right:10px;
-}
-.cam_img {   position:absolute;
-            bottom: 75px;
-            right:10px;
-}
+            right:10px; }
 
-.img_btn{   height: 25px;
-            width: auto;
+.map_img img{   height: 30px;
+                width: auto;
             }
 
 .separator{ height:1px;
@@ -392,9 +379,6 @@ right: 15px !important;
                 margin-right: auto !important;
                 font-size: 25px;
                 width: 80%;}
-.judul_view > a span{
-    overflow: hidden;
-}
 
 .my_hops .ratingc { margin-top: 0px;}
 
@@ -627,21 +611,4 @@ margin: 0px;
 .imgbring{
     width: 30%;
     float: left;
-}
-
-.add_pic{
-    position: relative;
-    top:60px;
-}
-
-#tagstrip{
-    top: -20px;
-}
-
-#ket2{
-    width: 95% !important;
-    height: 100px !important;
-}
-.popbring{
-    margin-left: 10px;
 }

@@ -20,34 +20,34 @@
 <body>
 <div data-role="page">
     <nav class="cbp-spmenu cbp-spmenu-horizontal cbp-spmenu-bottom" id="menuSort">
-          <ul class="push-y" data-role="listview">
+          <ul class="push-y sortmenu" data-role="listview">
             <li><div data-role="list-divider" id="listdiv">SORT BY</div></li>
-            <li class="list_sort"><a href="#" class="ui-btn ui-btn-icon-left ui-custom-icon ui-arrow-b ui-nodisc-icon">Rating</a></li>
-            <li><a href="#" class="ui-btn ui-btn-icon-left ui-custom-icon ui-arrow-d ui-nodisc-icon">Distance</a></li>
-            <li><a href="#" class="ui-btn ui-btn-icon-left ui-custom-icon ui-arrow-e ui-nodisc-icon">Cost</a></li>
-            <li><a href="#" class="ui-btn ui-btn-icon-left ui-custom-icon ui-arrow-f ui-nodisc-icon">Duration</a></li>
+            <li class="list_sort"><a href="#" onclick="sortListTrip(1)" class="ui-btn ui-btn-icon-left ui-custom-icon ui-arrow-b ui-nodisc-icon">Rating</a></li>
+            <li class="list_sort"><a onclick="sortListTrip(2)" href="#" class="ui-btn ui-btn-icon-left ui-custom-icon ui-arrow-d ui-nodisc-icon">Distance</a></li>
+            <li class="list_sort"><a onclick="sortListTrip(3)" href="#" class="ui-btn ui-btn-icon-left ui-custom-icon ui-arrow-e ui-nodisc-icon">Cost</a></li>
+            <li class="list_sort"><a href="#" onclick="sortListTrip(4)" class="ui-btn ui-btn-icon-left ui-custom-icon ui-arrow-f ui-nodisc-icon">Duration</a></li>
           </ul>
     </nav>
-
     <nav class="cbp-spmenu cbp-spmenu-horizontal1 cbp-spmenu-bottom1" id="menuFind">
           <ul data-role="listview" id="listGrup">
-            <li data-role="list-divider" id="listdiv">Filter By....</li>
+            <input type="search" name="searchTrip" id="searchTrip" value="">
+           <legend class="text_legend">Filter By..</legend>
             <input data-iconpos="right "type="checkbox" name="edu" id="checkbox-v-2a" data-mini="true">
-            <label for="checkbox-v-2a"><img id="imgcek" style="margin-right:20px" src="img/cat_educational.png">Educational</label>
+            <label for="checkbox-v-2a"><img src="img/cat_educational.png">Educational</label>
             <input data-iconpos="right "type="checkbox" name="culi" id="checkbox-v-2b" data-mini="true">
-            <label for="checkbox-v-2b"><img id="imgcek" style="margin-right:20px" src="img/cat_culinary.png">Culinary</label>
+            <label for="checkbox-v-2b"><img src="img/cat_culinary.png">Culinary</label>
             <input type="checkbox" name="cult" id="checkbox-v-2c" data-iconpos="right" data-mini="true">
-            <label for="checkbox-v-2c"><img id="imgcek" style="margin-right:20px" src="img/cat_culture.png">Culture</label>
+            <label for="checkbox-v-2c"><img src="img/cat_culture.png">Culture</label>
             <input data-iconpos="right "type="checkbox" name="eco" id="checkbox-v-2d" data-mini="true">
-            <label for="checkbox-v-2d"><img id="imgcek" style="margin-right:20px" src="img/cat_economical.png">Economical</label>
+            <label for="checkbox-v-2d"><img src="img/cat_economical.png">Economical</label>
             <input data-iconpos="right "type="checkbox" name="fam" id="checkbox-v-2e" data-mini="true">
-            <label for="checkbox-v-2e"><img id="imgcek" style="margin-right:20px" src="img/cat_family.png">Family</label>
+            <label for="checkbox-v-2e"><img src="img/cat_family.png">Family</label>
             <input type="checkbox" name="his" id="checkbox-v-2f" data-iconpos="right" data-mini="true">
-            <label for="checkbox-v-2f"><img id="imgcek" style="margin-right:20px" src="img/cat_history.png">History</label>
+            <label for="checkbox-v-2f"><img src="img/cat_history.png">History</label>
             <input data-iconpos="right "type="checkbox" name="nat" id="checkbox-v-2g" data-mini="true">
-            <label for="checkbox-v-2g"><img id="imgcek" style="margin-right:20px" src="img/cat_nature.png">Nature</label>
+            <label for="checkbox-v-2g"><img src="img/cat_nature.png">Nature</label>
             <input data-iconpos="right "type="checkbox" name="rom" id="checkbox-v-2h" data-mini="true">
-            <label for="checkbox-v-2h"><img id="imgcek" style="margin-right:20px" src="img/cat_romantic.png">Romantic</label>
+            <label for="checkbox-v-2h"><img src="img/cat_romantic.png">Romantic</label>
           </ul>
     </nav>
 

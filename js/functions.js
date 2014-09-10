@@ -255,8 +255,8 @@ function initMap(imaps,divid,lat,lon) {
       window.location = hal+".html";
     }
 
-    function getListTrip(lat,lon,filters){
-      $.get("http://localhost/htdocs/trippp/trip/list/"+lat+"/"+lon, { filter:filters,qword:'' }, function(data) {
+    function getListTrip(lat,lon,filters,qwords){
+      $.get("http://localhost/htdocs/trippp/trip/list/"+lat+"/"+lon, { filter:filters,qword:qwords }, function(data) {
           var resp = JSON.parse(data);
           if (resp.response) {
               //save to storage
@@ -359,6 +359,7 @@ function initMap(imaps,divid,lat,lon) {
         strContent += "</div><div id='mapbtn'><img src='img/map_btn.png'></div></div></a></li>";
       }
       $("#content_browse").html(strContent);
+      classie.toggle( menuSort, 'cbp-spmenu-open' );
     }
 
     function getMyListTrip(uid,filters){
