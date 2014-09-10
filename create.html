@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>HOP</title>
+<link rel="stylesheet" href="themes/koko2.min.css" />
+<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+<link rel="stylesheet" type="text/css" href="css/jquery.mobile.structure-1.4.3.min.css" />
+<!--link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.2.min.css" /-->
+<link rel="stylesheet" type="text/css" href="css/index.css" />
+<link rel="stylesheet" type="text/css" href="css/main.css" />
+<link rel="stylesheet" type="text/css" href="css/font/typo.css" />
+<link rel="stylesheet" type="text/css" href="css/responsive.css">
+<script src="js/modernizr.custom.js"></script>
+    <!--[if lt IE 9]>
+
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<div data-role="page">
+<div data-role="panel" id="myPanel" data-display="push"> > 
+      <ul data-role="controlgroup">
+            <a onclick="pindahHal('now')" href="#" class="ui-btn">NOW</a></li>
+            <a onclick="pindahHal('browse')" href="#" class="ui-btn">BROWSE</a>
+            <a onclick="pindahHal('my_hops')" href="#" class="ui-btn">MY HOPS</a>
+            <a onclick="pindahHal('create')" href="#" class="ui-btn">CREATE HOP</a>
+            <a onclick="pindahHal('recording')" href="#" class="ui-btn">RECORD HOP</a>
+            <a href="#" class="ui-btn">MY PLACE</a>
+            <a href="#" class="ui-btn">ACCOUNT</a>
+            <a href="#" class="ui-btn">TRAVEL BUDDIES</a>
+            <a onclick="logOut()" href="#" class="ui-btn">LOGOUT</a>
+            </ul>
+  </div> 
+	<div data-role="header" data-position="fixed" data-tap-toggle="false">
+   		<div class="headpage">
+      		<div><a href="#myPanel"><img class="side_menu" src="img/side_menu_btn.png"></a></div>
+      		<div class="browse_text">Create Trip</div>
+    	</div><!-- /header -->
+  </div>
+
+	<div role="main" id="view-content">
+      <!--********************** pop up  *******************************************************-->
+        <div data-role="popup" id="popupJudul">
+             <input type="text" name="text-2" id="text-judul" onchange="gantiJudul('text-judul','judul-text','add title...')" value="" placeholder="judul"  data-enhanced="true">
+        </div>
+
+        <div data-role="popup" id="popupCat">
+          <form>
+            <fieldset data-role="controlgroup" id="listgrup">
+              <input data-iconpos="right" type="checkbox" name="edu" id="checkbox-v-2a" >
+              <label for="checkbox-v-2a"><img src="img/cat_educational.png">Educational</label>
+              <input data-iconpos="right "type="checkbox" name="culi" id="checkbox-v-2b">
+              <label for="checkbox-v-2b"><img src="img/cat_culinary.png">Culinary</label>
+              <input type="checkbox" name="cult" id="checkbox-v-2c" data-iconpos="right" >
+              <label for="checkbox-v-2c"><img src="img/cat_culture.png">Culture</label>
+              <input data-iconpos="right "type="checkbox" name="eco" id="checkbox-v-2d">
+              <label for="checkbox-v-2d"><img src="img/cat_economical.png">Economical</label>
+              <input data-iconpos="right "type="checkbox" name="fam" id="checkbox-v-2e" >
+              <label for="checkbox-v-2e"><img src="img/cat_family.png">Family</label>
+              <input data-iconpos="right" type="checkbox" name="his" id="checkbox-v-2f">
+              <label for="checkbox-v-2f"><img src="img/cat_history.png">History</label>
+              <input data-iconpos="right "type="checkbox" name="nat" id="checkbox-v-2g">
+              <label for="checkbox-v-2g"><img src="img/cat_nature.png">Nature</label>
+              <input data-iconpos="right "type="checkbox" name="rom" id="checkbox-v-2h">
+              <label for="checkbox-v-2h"><img src="img/cat_romantic.png">Romantic</label>
+              <div class="tombolPopup"><a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-a lebar50" data-rel="back">Cancel</a><a href="#" onclick="cebok('listgrup','tagstrip')" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-a lebar50" data-rel="back">Done</a>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+
+        <div data-role="popup" id="popupBring">
+          <form>
+            <fieldset data-role="controlgroup" id="listgrup2">
+              <input data-iconpos="right "type="checkbox" name="cash" id="checkbox-v-2i" data-mini="true">
+              <label for="checkbox-v-2i"><img  src="img/bring_cash.png">Cash</label>
+              <input data-iconpos="right "type="checkbox" name="camera" id="checkbox-v-2j" data-mini="true">
+              <label for="checkbox-v-2j"><img  src="img/bring_camera.png">Camera</label>
+              <input type="checkbox" name="food" id="checkbox-v-2k" data-iconpos="right" data-mini="true">
+              <label for="checkbox-v-2k"><img  src="img/bring_food.png">Food</label>
+              <input data-iconpos="right "type="checkbox" name="nohigh" id="checkbox-v-2l" data-mini="true">
+              <label for="checkbox-v-2l"><img  src="img/bring_high_heels.png">No High Heels</label>
+              <input data-iconpos="right "type="checkbox" name="picnic" id="checkbox-v-2m" data-mini="true">
+              <label for="checkbox-v-2m"><img  src="img/bring_picnic_mat.png">Picnic Mat</label>
+              <input type="checkbox" name="wat" id="checkbox-v-2n" data-iconpos="right" data-mini="true">
+              <label for="checkbox-v-2n"><img  src="img/bring_water.png">Water</label>
+            </fieldset>
+          </form>
+               <div class="tombolPopup"><a href="#" class="ui-btn ui-corner-all ui-btn-inline ui-btn-a lebar50" data-rel="back">Cancel</a>
+                <a href="#" onclick="cebokbring('listgrup2','tagstrip2')" class="ui-btn ui-corner-all ui-btn-inline ui-btn-a lebar50" data-rel="back">Done</a></div>
+        </div> 
+
+        <div data-role="popup" id="popupJam">
+          <div class="waktu_mulai text_cen margin_top_bot"><img src="img/time.png"><span class="mulai_text">start time</span></div>
+          <div class="waktu_mulai_form text_cen">
+            <form>
+              <input class="lebar50" type="text" name="jamStart" id="jamStart" value="" placeholder="18"  data-enhanced="true">
+              <input class="lebar50" type="text" name="menitStart" id="menitStart" value="" placeholder="59"  data-enhanced="true">
+            </form>
+          </div>
+          <div class="waktu_akhir text_cen margin_top_bot"><img src="img/time.png"><span class="end_text">end time</span></div>
+          <div class="waktu_end_form text_cen">
+              <form>
+                <input class="lebar50" type="text" name="jamEnd" id="jamEnd" value="" placeholder="18"  data-enhanced="true">
+                <input class="lebar50" type="text" name="menitEnd" id="menitEnd" value="" placeholder="59"  data-enhanced="true">
+              </form>
+          </div>
+          <div class="tombolPopup"><a href="#" class="ui-btn ui-corner-all ui-btn-inline ui-btn-a lebar50" data-rel="back">Cancel</a><a href="#" onclick="gantiJam()" value="" class="ui-btn ui-corner-all ui-btn-inline ui-btn-a lebar50" data-rel="back">Done</a>
+          </div>
+        </div> 
+
+      <div data-role="popup" id="popupTiket">
+              <div class="text_cen margin_top_bot imgtiket"><img src="img/ticket.png">ticket</div>
+              <div><form class="text_cen">Rp.<input class="lebar50" type="text" name="hargaTiket" id="hargaTiket" value="" placeholder="10000"  data-enhanced="true"></form></div>
+              <div class="text_cen margin_top_bot imgfood"><img src="img/food_bev.png">food &amp; bev</div>
+              <div><form class="text_cen">Rp.<input class="lebar50" type="text" name="hargaFood" id="hargaFood" value="" placeholder="10000"  data-enhanced="true"></form></div>
+              <!--<div><img src="img/rent.png"> rent</div>
+              <div><form>Rp.<input class="lebar50" type="text" name="hargaRent" id="hargaRent" value="" placeholder="18"  data-enhanced="true"></form></div>-->
+              <div class="tombolPopup"><a href="#" class="ui-btn ui-corner-all ui-btn-inline ui-btn-a lebar50" data-rel="back">Cancel</a>
+              <a href="#" onclick="gantiBiaya()" class="ui-btn ui-corner-all ui-btn-inline ui-btn-a lebar50" data-rel="back">Done</a></div>
+      </div> 
+
+        <div data-role="popup" id="popupket">
+            <form>
+                <textarea value="" name="textarea-6" placeholder="isilah keterangan" data-enhanced="true" id="ket2"></textarea>
+            </form>
+            <div class="tombolPopup"><a href="#" class="ui-btn ui-corner-all ui-btn-inline ui-btn-a lebar50" data-rel="back">Cancel</a><a href="#" onclick="gantiJudul('ket2','ket1','keterangan ...')" class="ui-btn ui-corner-all ui-btn-inline ui-btn-a lebar50" data-rel="back">Done</a>
+            </div>
+        </div>
+      <!-- gambar utama & deskripsi -->
+   		<div class='view1'>
+        <div class="judul_view"><a style="color:white;" href="#popupJudul" data-rel="popup" data-transition="pop"><span id="judul-text">Add title ...</span></a></div>
+        <div class="add_pic"><a style="color:#ffffff !important;" onclick="alert('cari view1 dan add_pic')" href="">ADD<br />MAIN PICTURE</a></div>
+        <div class="cat_img"><a style="color:#ffffff !important;" href="#popupCat" data-rel="popup" data-transition="pop"><span id="tagstrip">add tags ...</span></a></div> 
+        <div class="map_img"><a href="" onclick="alert('peta belum tersedia')"><img class="img_btn" src="img/map_btn.png" /></a></div>
+        <div class="gal_img"><a href=""><img class="img_btn" src="img/gallery_btn.png" /></a></div>
+        <div class="cam_img"><a href=""><img class="img_btn" src="img/camera_circ-btn.png" /></a></div>
+      </div>
+        <div id="text_desc"><a style="color:#000 !important;" href="#popupket" data-rel="popup" data-transition="pop">
+          <p><span id="ket1">Keterangan</span></p></a>
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="rwd2">
+        <a style="color:#000 !important;" href="#popupJam" data-rel="popup" data-transition="pop">
+          <div class="ui-block-a"><img src="img/time.png"></div>
+          <div class="ui-block-b"><div class="stat_text"><span class="dina_text" id="dina_jam">24</span>h</div></div>
+          <div class="ui-block-c"><div class="stat_text"><span class="dina_text" id="dina_men">0</span>m</div></div>
+          <div class="ui-block-d"></div>
+          <div class="ui-block-e"><div class="stat_text"><span class="dina_text" id="jamStart2">00</span>.<span class="dina_text" id="menitStart2">00</span>-<span class="dina_text" id="jamEnd2">00</span>.<span class="dina_text" id="menitEnd2">00</span></div></div>
+          <div style="clear:both"></div>
+          </a>
+        </div><!-- grid jam -->
+
+        <div class="rwd3">
+        <a style="color:#000 !important;" href="#popupTiket" data-rel="popup" data-transition="pop">
+          <div class="ui-block-a"><img src="img/ticket.png"></div>
+          <div class="ui-block-b"><div class="stat_text">Rp.<span class="dina_text" id="hargaTiket2">0</span></div></div>
+          <div class="ui-block-c"></div>
+          <div class="ui-block-d"><img src="img/food_bev.png"></div>
+          <div class="ui-block-e"><div class="stat_text">Rp.<span class="dina_text" id="hargaFood2">0</span></div></div>
+          <div style="clear:both"></div>
+          </a>
+        </div><!-- grid harga -->
+
+        <div class="separator"></div>
+
+        <div class="rwd7">
+          <div class="popbring"><a style="color:#000 !important;" href="#popupBring" data-rel="popup" data-transition="pop"><span id="tagstrip2">&nbsp;&nbsp;&nbsp;add bringings ...</span></a></div>
+        </span>
+        <div style="clear:both"></div>
+        </div>
+      <!--********************** akhir gambar utama & deskripsi  *******************************************************-->
+      <!-- start list tempat -->
+        <div>
+          <ul data-role="listview" data-icon="false" id="content_places">
+            <li>
+              <div class='view2'><div class="judul_tempat"><a style="color:white;" href="#popupJudultempat" data-rel="popup" data-transition="pop"><span id="judul-texttempat">nama tempat ...</span></a></div>
+                    <div class="text-tempat cat_img"><a style="color:#fff !important;" href="#popupket_tempat" data-rel="popup" data-transition="pop"><span id="ket_tempat">keterangan ...</span></a></div>
+                    <div class="map_img">
+                      <div class="map_img"><a href=""><img class="img_btn" src="img/map_btn.png" /></a></div>
+                      <div class="gal_img"><a href=""><img class="img_btn" src="img/gallery_btn.png" /></a></div>
+                    </div>
+              </div>
+              <div class="rwd2" style="margin-top:10px;">
+                <a style="color:#000 !important;" href="#popupJam_tempat" data-rel="popup" data-transition="pop">
+                  <div class="ui-block-a"><img src="img/time.png"></div>
+                  <div class="ui-block-b"><div class="stat_text"><span class="dina_text">24</span>h</div></div>
+                  <div class="ui-block-c"><div class="stat_text"><span class="dina_text">0</span>m</div></div>
+                  <div class="ui-block-d"></div>
+                  <div class="ui-block-e"><div class="stat_text"><span class="dina_text" id="jamStart2_tempat">00</span>.<span class="dina_text" id="menitStart2_tempat">00</span>-<span class="dina_text" id="jamEnd2_tempat">00</span>.<span class="dina_text" id="menitEnd2_tempat">00</span></div></div>
+                  <div style="clear:both"></div>
+                  </a>
+                </div><!-- grid jam -->
+              <div class="rwd3">
+              <a style="color:#000 !important;" href="#popupTiket_tempat" data-rel="popup" data-transition="pop">
+                <div class="ui-block-a"><img src="img/ticket.png"></div>
+                <div class="ui-block-b"><div class="stat_text">Rp.<span class="dina_text" id="hargaTiket2_tempat">0</span></div></div>
+                <div class="ui-block-c"></div>
+                <div class="ui-block-d"><img src="img/food_bev.png"></div>
+                <div class="ui-block-e"><div class="stat_text">Rp.<span class="dina_text" id="hargaFood2_tempat">0</span></div></div>
+                <div style="clear:both"></div>
+                </a>
+              </div><!-- grid harga -->
+              <!--div class="rwd4">
+              <a style="color:#000 !important;" href="#popupVeh" data-rel="popup" data-transition="pop">
+                <div class="ui-block-a"><span id="imgveh"><img src="img/vehcl_bus.png"></span></div></a>
+              <a style="color:#000 !important;" href="#popupVeh_judul" data-rel="popup" data-transition="pop">
+                <div class="ui-block-b dina_text"><span id="judul-textveh">Angkot</span><span>A</span> - <span>B</span></div></a>
+                <div style="clear:both"></div>
+              </div>
+              <div class="text-veh"><a style="color:#000 !important;" href="#popupket_Veh" data-rel="popup" data-transition="pop"><span id="ket_vehicle">keterangan ...</a></span></div-->
+              <!--INI ADALAH POP UP-->
+              <div data-role="popup" id="popupJudultempat">
+                <input type="text" name="text-2" id="text-judultempat" onchange="gantiJudul('text-judultempat','judul-texttempat')" value="" placeholder="judul"  data-enhanced="true">
+              </div>
+              <div data-role="popup" id="popupBring_tempat">
+                <fieldset data-role="controlgroup" id="listgrup2">
+                  <input data-iconpos="right "type="checkbox" name="cash" id="checkbox-v-2o" data-mini="true">
+                  <label for="checkbox-v-2i"><img  src="img/bring_cash.png">Cash</label>
+                  <input data-iconpos="right "type="checkbox" name="camera" id="checkbox-v-2p" data-mini="true">
+                  <label for="checkbox-v-2j"><img  src="img/bring_camera.png">Camera</label>
+                  <input type="checkbox" name="food" id="checkbox-v-2q" data-iconpos="right" data-mini="true">
+                  <label for="checkbox-v-2k"><img  src="img/bring_food.png">Food</label>
+                  <input data-iconpos="right "type="checkbox" name="nohigh" id="checkbox-v-2r" data-mini="true">
+                  <label for="checkbox-v-2l"><img  src="img/bring_high_heels.png">No High Heels</label>
+                  <input data-iconpos="right "type="checkbox" name="picnic" id="checkbox-v-2s" data-mini="true">
+                  <label for="checkbox-v-2m"><img  src="img/bring_picnic_mat.png">Picnic Mat</label>
+                  <input type="checkbox" name="wat" id="checkbox-v-2t" data-iconpos="right" data-mini="true">
+                  <label for="checkbox-v-2n"><img  src="img/bring_water.png">Water</label>
+                </fieldset>
+               <div class="tombolPopup"><a href="#" class="ui-btn ui-corner-all ui-btn-inline ui-btn-a lebar50" data-rel="back">Cancel</a>
+                <a href="#" onclick="cebokbring('listgrup2_tempat','tagstrip2_tempat')" class="ui-btn ui-corner-all ui-btn-inline ui-btn-a lebar50" data-rel="back">Done</a></div>
+            </div> 
+            <div data-role="popup" id="popupJam_tempat">
+              <div class="waktu_mulai text_cen margin_top_bot"><img src="img/time.png"><span class="mulai_text">start time</span></div>
+              <div class="waktu_mulai_form">
+                <form>
+                  <input class="lebar50" type="text" name="jamStart" id="jamStart_tempat" value="" placeholder="18"  data-enhanced="true">
+                  <input class="lebar50" type="text" name="menitStart" id="menitStart_tempat" value="" placeholder="59"  data-enhanced="true">
+                </form>
+              </div>
+              <div class="waktu_akhir text_cen margin_top_bot"><img src="img/time.png"><span class="end_text">end time</span></div>
+              <div class="waktu_end_form">
+                  <form>
+                    <input class="lebar50" type="text" name="jamEnd" id="jamEnd_tempat" value="" placeholder="18"  data-enhanced="true">
+                    <input class="lebar50" type="text" name="menitEnd" id="menitEnd_tempat" value="" placeholder="59"  data-enhanced="true">
+                  </form>
+              </div>
+              <div class="tombolPopup"><a href="#" class="ui-btn ui-corner-all ui-btn-inline ui-btn-a lebar50" data-rel="back">Cancel</a><a href="#" onclick="gantiJudul('jamStart_tempat','jamStart2_tempat');gantiJudul('menitStart_tempat','menitStart2_tempat');gantiJudul('jamEnd_tempat','jamEnd2_tempat');gantiJudul('menitEnd_tempat','menitEnd2_tempat');" value="" class="ui-btn ui-corner-all ui-btn-inline ui-btn-a lebar50" data-rel="back">Done</a>
+              </div>
+            </div> 
+            <div data-role="popup" id="popupTiket_tempat">
+              <div class="imgtiket text_cen margin_top_bot"><img src="img/ticket.png">ticket</div>
+              <div><form>Rp.<input class="lebar50" type="text" name="hargaTiket" id="hargaTiket_tempat" value="" placeholder="18"  data-enhanced="true"></form></div>
+              <div class="imgfood text_cen margin_top_bot"><img src="img/food_bev.png">food &amp; bev</div>
+              <div><form>Rp.<input class="lebar50" type="text" name="hargaFood" id="hargaFood_tempat" value="" placeholder="18"  data-enhanced="true"></form></div>
+              <!--<div><img src="img/rent.png"> rent</div>
+              <div><form>Rp.<input class="lebar50" type="text" name="hargaRent" id="hargaRent" value="" placeholder="18"  data-enhanced="true"></form></div>-->
+              <div class="tombolPopup"><a href="#" class="ui-btn ui-corner-all ui-btn-inline ui-btn-a lebar50" data-rel="back">Cancel</a>
+              <a href="#" onclick="gantiJudul('hargaTiket_tempat','hargaTiket2_tempat');gantiJudul('hargaFood_tempat','hargaFood2_tempat');" class="ui-btn ui-corner-all ui-btn-inline ui-btn-a lebar50" data-rel="back">Done</a></div>
+            </div> 
+            <div data-role="popup" id="popupVeh">
+              <div class="text_popveh">pick a vehicle</div>
+                <a href="" onclick="gantiveh()" class="ui-btn" data-rel="back"  ><img src="img/vehcl_bus.png"></a>
+                <a href="" onclick="gantiveh2()" class="ui-btn" data-rel="back"><img src="img/vehcl_private.png"></a>
+                <a href="" onclick="gantiveh3()" class="ui-btn" data-rel="back"><img src="img/vehcl_taxi.png"></a>
+                <a href="" onclick="gantiveh4()" class="ui-btn" data-rel="back"><img src="img/vehcl_walk.png"></a>
+                <a href="" onclick="gantiveh5()" class="ui-btn" data-rel="back"><img src="img/vehcl_bike.png"></a>
+              <div style="clear:both"></div>
+            </div>
+              <div data-role="popup" id="popupket_tempat">
+                  <textarea value="" name="textarea-6" placeholder="Lorem ipsum dolor sit amet," data-enhanced="true" id="ket_tempat2"></textarea>
+                  <div class="tombolPopup"><a href="#" class="ui-btn ui-corner-all ui-btn-inline ui-btn-a lebar50" data-rel="back">Cancel</a><a href="#" onclick="gantiJudul('ket_tempat2','ket_tempat')" class="ui-btn ui-corner-all ui-btn-inline ui-btn-a lebar50" data-rel="back">Done</a>
+                  </div>
+              </div>
+              <div data-role="popup" id="popupVeh_judul">
+                <input type="text" name="text-2" id="text-judulveh" onchange="gantiJudul('text-judulveh','judul-textveh')" value="" placeholder="judul"  data-enhanced="true">
+              </div>
+              <div data-role="popup" id="popupket_Veh">
+                <textarea value="" name="textarea-6" placeholder="Lorem ipsum dolor sit amet," data-enhanced="true" id="ket_vehicle2"></textarea>
+                <div class="tombolPopup"><a href="#" class="ui-btn ui-corner-all ui-btn-inline ui-btn-a lebar50" data-rel="back">Cancel</a><a href="#" onclick="gantiJudul('ket_vehicle2','ket_vehicle')" class="ui-btn ui-corner-all ui-btn-inline ui-btn-a lebar50" data-rel="back">Done</a>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <!-- akhir list tempat -->
+  </div>
+
+	<div data-role="footer" data-position="fixed" data-tap-toggle="false">
+		<div data-role="navbar">
+        <ul>
+            <li id="btnAddPlace" class="img_nav"><a href="#" data-icon="false">&#43; ADD PLACE</a></li>
+        </ul>
+    	</div><!-- /navbar -->
+
+	</div><!-- /footer -->
+    
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/functions.js"></script>
+    <script src="js/classie.js"></script>
+    <script src="js/jquery.mobile-1.4.3.min.js"></script>
+    <script type="text/javascript">
+      function gantiJudul(intext,outtext,def = 'n/a'){
+        var inputan = $('#'+intext).val();
+        if (inputan=="") inputan = def;
+        $('#'+outtext).html(inputan);
+      }
+      function cebokbring(listgrup,popcek){
+        var arrTags = getCheckMulti(listgrup);
+        console.log(arrTags);
+        var gambar = '';
+        for ( var i = 0; i < arrTags.length;i++){
+          switch(arrTags[i]){
+            case 'cash': gambar = 'bring_cash';break;
+            case 'camera': gambar = 'bring_camera';break;
+            case 'food': gambar = 'bring_food';break;
+            case 'nohigh': gambar = 'bring_high_heels';break;
+            case 'picnic': gambar = 'bring_picnic_mat';break;
+            case 'wat': gambar = 'bring_water';break;
+          }
+          if (i == 0) { 
+            $('#'+popcek).html('<div class="imgbring"><img src="img/'+gambar+'.png"/>&nbsp;&nbsp;</div>');
+          } else {
+            $('#'+popcek).append('<div class="imgbring"><img src="img/'+gambar+'.png"/>&nbsp;&nbsp;</div>');
+          }
+        };
+      }
+      function cebok(listgrup,popcek){
+        var arrTags = getCheckMulti(listgrup);
+        console.log(arrTags);
+        var gambar = '';
+        for ( var i = 0; i < arrTags.length;i++){
+          switch(arrTags[i]){
+            case 'edu': gambar = 'cat_educational_white';break;
+            case 'culi': gambar = 'cat_culinary_white';break;
+            case 'cult':gambar = 'cat_culture_white';break;
+            case 'eco': gambar = 'cat_economical_white';break;
+            case 'fam': gambar = 'cat_family_white';break;;  
+            case 'his': gambar = 'cat_history_white';break;
+            case 'nat': gambar = 'cat_nature_white';break;
+            case 'rom': gambar = 'cat_romantic_white';break;
+          }
+          if (i == 0) { 
+            $('#'+popcek).html('<div><img class="icontag" src="img/'+gambar+'.png" /></div>');
+          }else {
+            $('#'+popcek).append('<div><img class="icontag" src="img/'+gambar+'.png" /></div>');
+          }
+        };
+      }
+      function gantiveh(i){
+        var gambar = '';
+        switch(i){
+          case 1 : gambar = 'vehcl_bus'; break;
+          case 2 : gambar = 'vehcl_private'; break;
+          case 3 : gambar = 'vehcl_taxi'; break;
+          case 4 : gambar = 'vehcl_walk'; break;
+          case 5 : gambar = 'vehcl_bike'; break;
+        }
+        $('#imgveh').html('<div><img src="img/'+gambar+'.png" /></div>')
+      }
+      function gantiJam(){
+        gantiJudul('jamStart','jamStart2','00');
+        gantiJudul('menitStart','menitStart2','00');
+        gantiJudul('jamEnd','jamEnd2','00');
+        gantiJudul('menitEnd','menitEnd2','00');
+        //
+        var m2 = parseInt($('#menitEnd').val());
+        var m1 = parseInt($('#menitStart').val());
+        var j2 = parseInt($('#jamEnd').val());
+        var j1 = parseInt($('#jamStart').val());
+        var msel = (m2 < m1) ? m2+60-m1 : m2-m1;
+        var jlebih = Math.floor(msel/60); 
+        msel = msel%60;
+        var jsel = (j2 < j1) ? j2+24-j1+jlebih : j2-j1+jlebih;
+        $('#dina_jam').html(jsel);
+        $('#dina_men').html(msel);
+      }
+      function gantiBiaya(){
+        var tiket = parseInt($('#hargaTiket').val());
+        var food = parseInt($('#hargaFood').val());
+        $('#hargaTiket2').html(int_to_rp(tiket));
+        $('#hargaFood2').html(int_to_rp(food));
+      }
+    </script>
+</div><!-- /page -->
+
+</body>
+</html>

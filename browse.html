@@ -28,10 +28,9 @@
             <li class="list_sort"><a href="#" onclick="sortListTrip(4)" class="ui-btn ui-btn-icon-left ui-custom-icon ui-arrow-f ui-nodisc-icon">Duration</a></li>
           </ul>
     </nav>
-
     <nav class="cbp-spmenu cbp-spmenu-horizontal1 cbp-spmenu-bottom1" id="menuFind">
           <ul data-role="listview" id="listGrup">
-            <input type="search" name="search" id="search-basic" value="">
+            <input type="search" name="searchTrip" id="searchTrip" value="">
            <legend class="text_legend">Filter By..</legend>
             <input data-iconpos="right "type="checkbox" name="edu" id="checkbox-v-2a" data-mini="true">
             <label for="checkbox-v-2a"><img src="img/cat_educational.png">Educational</label>
@@ -108,8 +107,9 @@
         if(!classie.has( menuFind, 'cbp-spmenu-open' )){
           //update list
           var checked = getCheckMulti('listGrup');
-          console.log(checked.join());
-          getListTrip(curLat,curLon,checked.join());
+          var qword = $('#searchTrip').val();
+          console.log('q='+qword);
+          getListTrip(curLat,curLon,checked.join(),qword);
         }
       };
       //
@@ -121,8 +121,9 @@
             curLon = position.coords.longitude;
             //getlist
             var checked = getCheckMulti('listGrup');
-            //console.log(checked.join())
-            getListTrip(curLat,curLon,checked.join());
+            var qword = $('#searchTrip').val();
+            console.log('q='+qword);
+            getListTrip(curLat,curLon,checked.join(),qword);
           }, function(error) {
             console.log("Error occurred. Error code: " + error.code);
           });
