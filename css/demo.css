@@ -98,6 +98,12 @@ body, input, select, textarea, button, .ui-btn {font-family: 'ostrich_sansmedium
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
+.page-five{
+    height: 480px;
+    background-image: url(../img/page5.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
 .container{    
     font-size: 150%;    
     font-family: 'ostrich_sanscondensed_light'!important;
@@ -118,6 +124,12 @@ body, input, select, textarea, button, .ui-btn {font-family: 'ostrich_sansmedium
     top: 50px;
     font-size: 20pt;
 }
+.text-top-five{
+    position: relative;
+    top: 300px;
+    font-size: 20pt;
+    color: black !important;
+}
 .title{
     position: relative;
     top: 230px;
@@ -135,21 +147,22 @@ body, input, select, textarea, button, .ui-btn {font-family: 'ostrich_sansmedium
 .getstarted{
     width: 140px;
     margin:0 auto;
-    border: 1px solid white; 
-    border-radius: 5px;  
+    /*border: 1px solid white; 
+    border-radius: 5px;  */
     position: relative;
-    top:80px;
+    top:300px;
 }
 
 .text-bottom{     
     padding: 10px;  
     display: inline;
     font-size: 20pt;
+    color: black !important;
 }
 .slider-nav{
-    position: relative;
-    top: -40px;
-    left: 105px;
+    position: absolute;
+    bottom : 250px;
+    left: 180px;
     text-align: center;
     margin-top: 20px;   
     display: inline;
