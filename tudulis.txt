@@ -9,8 +9,8 @@ CREATE
 	v kurang tombol finish
 	- default input text
 	- icon yang sesuai
-	- kirim gambar
-	- kalau jam gak diisi, NaN
+	v kirim gambar
+	v kalau jam gak diisi, NaN
 RECORD
 	- info di marker
 BROWSE

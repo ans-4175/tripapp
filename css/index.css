@@ -335,7 +335,7 @@ right: 15px !important;
       }
 
       .view2 {height: 300px !important;
-          background-image: url(../img/a.jpg) !important;
+          background-image: url(../img/a.jpg);
           background-size: 100% 100%;
           font-size: 30px;
           color: #ffffff;

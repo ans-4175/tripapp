@@ -121,14 +121,14 @@
             </div>
         </div>
       <!-- gambar utama & deskripsi -->
-   		<div class='view1'>
+   		<div class='view1' id="picRoute">
         <div class="judul_view"><a style="color:white;" href="#popupJudul" data-rel="popup" data-transition="pop"><span id="judulRoute">Add title ...</span></a></div>
         <div class="add_pic"><a style="color:#ffffff !important;" onclick="document.getElementById('take-picture').click()" href="">ADD<br />MAIN PICTURE</a></div>
-        <div class="ui-input-hide"><input type="file" id="take-picture" accept="image/*" style="display:none;" onchange="loadImageFileAsURL()"></div>
+        <div class="ui-input-hide"><input type="file" id="take-picture" accept="image/*;capture=camera" style="display:none;" onchange="loadImageFileAsURL()"></div>
         <div class="cat_img"><a style="color:#ffffff !important;" href="#popupCat" data-rel="popup" data-transition="pop"><span id="tagsRoute">add tags ...</span></a></div> 
         <div class="map_img"><a href="" onclick="alert('peta belum tersedia')"><img class="img_btn" src="img/map_btn.png" /></a></div>
-        <div class="gal_img"><a href=""><img class="img_btn" src="img/gallery_btn.png" /></a></div>
-        <div class="cam_img"><a href=""><img class="img_btn" src="img/camera_circ-btn.png" /></a></div>
+        <div class="gal_img"><a href="" onclick="document.getElementById('take-picture').click()" ><img class="img_btn" src="img/gallery_btn.png" /></a></div>
+        <div class="cam_img"><a href="" onclick="document.getElementById('take-picture').click()"><img class="img_btn" src="img/camera_circ-btn.png" /></a></div>
       </div>
         <div id="text_desc"><a style="color:#000 !important;" href="#popupket" data-rel="popup" data-transition="pop">
           <p><span id="ketRoute">Keterangan</span></p></a>
@@ -180,7 +180,8 @@
 	<div data-role="footer" data-position="fixed" data-tap-toggle="false">
 		<div data-role="navbar">
         <ul>
-            <li id="btnAddPlace" class="img_nav"><a href="#" data-icon="false">&#43; ADD PLACE</a></li>
+            <li id="btnAddPlace" class="img_nav"><a href="#" onclick="pindahAddplace()" data-icon="false">&#43; ADD PLACE</a></li>
+            <li id="btnFinish" class="img_nav"><a href="#" onclick="finishCreate()" data-icon="false">FINISH</a></li>
         </ul>
     	</div><!-- /navbar -->
 
@@ -217,6 +218,8 @@
             //hitung total tiket-makan
             totiket += parseInt(createR.places[place].tiket);
             totmakan += parseInt(createR.places[place].makan);
+            //pic
+            $('#picPlace-'+place).css('background-image', 'url('+createR.places[place].pic+')');
           }
           $('#judulRoute').html(createR.judul);
           if (createR.tags.length > 0)
@@ -243,6 +246,8 @@
           $('#hargaFood2').html(int_to_rp(totmakan));
           createR['tiket'] = totiket;
           createR['makan'] = totmakan;
+          //pic
+          $('#picRoute').css('background-image', 'url('+createR['pic']+')');
           //simpan
           localStorage.setItem('createRoute', JSON.stringify(createR));  
         }else{
@@ -253,13 +258,13 @@
           createR['judul'] = 'add title...';
           createR['ket'] = 'keterangan...';
           createR['tags'] = [];
-          createR['pic'] = '';
+          createR['pic'] = 'img/a.jpg';
           createR['jamSt'] = '00';
           createR['menitSt'] = '00';
           createR['jamEnd'] = '00';
           createR['menitEnd'] = '00';
-          createR['tiket'] = '0';
-          createR['makan'] = '0';
+          createR['tiket'] = 0;
+          createR['makan'] = 0;
           createR['brings'] = [];
           createR['places'] = [];
           localStorage.setItem('createRoute', JSON.stringify(createR));  
@@ -278,24 +283,6 @@
             pindahHal('browse');
         }, "json");
       }
-	function loadImageFileAsURL(){
-      var fileSelected=document.getElementById("take-picture").files;
-        if (fileSelected.length>0)
-         {
-          var fileToLoad=fileSelected[0];
-          if(fileToLoad.type.match("image.*"))
-          {
-            var fileReader=new FileReader();
-            fileReader.onload=function(fileLoadedEvent)
-            {
-              // var imageLoaded=document.getElementById("blah");
-              // imageLoaded.src=fileLoadedEvent.target.result;
-              $('.view1').css('background-image', 'url('+fileLoadedEvent.target.result+')');
-            };
-            fileReader.readAsDataURL(fileToLoad);
-          }
-        }
-     }
     </script>
 </div><!-- /page -->
 
