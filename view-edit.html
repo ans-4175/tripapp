@@ -21,18 +21,7 @@
 <body>
 
 <div data-role="page">
-<div data-role="panel" id="myPanel" data-display="push"> > 
-      <ul data-role="controlgroup">
-            <a onclick="pindahHal('now')" href="#" class="ui-btn">NOW</a></li>
-            <a onclick="pindahHal('browse')" href="#" class="ui-btn">BROWSE</a>
-            <a onclick="pindahHal('my_hops')" href="#" class="ui-btn">MY HOPS</a>
-            <a href="#" class="ui-btn">CREATE HOP</a>
-            <a onclick="pindahHal('recording')" href="#" class="ui-btn">RECORD HOP</a>
-            <a href="#" class="ui-btn">MY PLACE</a>
-            <a href="#" class="ui-btn">ACCOUNT</a>
-            <a href="#" class="ui-btn">TRAVEL BUDDIES</a>
-            <a onclick="logOut()" href="#" class="ui-btn">LOGOUT</a>
-            </ul>
+  <div data-role="panel" id="myPanel" data-display="push"> > 
   </div> 
 	<div data-role="header" data-position="fixed">
    		<div class="headpage">
@@ -339,6 +328,9 @@
     <script src="js/classie.js"></script>
     <script src="js/jquery.mobile-1.4.3.min.js"></script>
     <script type="text/javascript">
+      window.onload = function() {
+        $('#myPanel').load('comp_sidelink.html');
+      };
       function gantiJudul(intext,outtext){
         var inputan = $('#'+intext).val();
         $('#'+outtext).html(inputan);

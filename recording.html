@@ -97,7 +97,7 @@
         classie.add( pushmenu2, 'cbp-spmenu-open' );
         if(classie.has( pushmenu2, 'cbp-spmenu-open' )){
           //save record
-          savingTrip(pushmenu2);
+          pindahHal('view_create');
         }
       });
       $('#showFin').click(function() {
@@ -106,13 +106,14 @@
       //
       window.onload = function() {
         //
+        var baru = true;
         headerHeight = $('#header').height();
         footerHeight = $('#footer').height();
         windowHeight = $(window).height();
         $('#main-map').css('min-height', windowHeight - headerHeight - footerHeight);
+        $('#myPanel').load('comp_sidelink.html');
         //
         if (localStorage.getItem("startRec") !== null) {
-          var baru = false;
           if (confirm('Continue last record ?')) {
               baru = false;
           } else {
@@ -125,15 +126,15 @@
             curLat = position.coords.latitude;
             curLon = position.coords.longitude;
             if (baru) {
-              var startRec = [];
-              var rec1 = {
+              var startRec = new Array();
+              /*var rec1 = {
                 'lat': position.coords.latitude,
                 'lon': position.coords.longitude,
                 'time': getCurTime(),
                 'nama':'',
                 'kota':''
               };
-              startRec.push(rec1);
+              startRec.push(rec1);*/
               console.log(startRec);
               localStorage.setItem('startRec', JSON.stringify(startRec));
               baru = false;

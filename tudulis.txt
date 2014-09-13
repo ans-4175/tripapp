@@ -1,0 +1,31 @@
+CREATE
+	v create dipasang logic JS buat nyimpennya
+	v dinamis di nambah places
+	v dinamis di nambah dan hitung jamnya
+	v dinamis di nambah biaya dll
+	v ambil foto dari places
+	v places
+	- refresh yang rangkuman saat ubah isian
+	v kurang tombol finish
+	- default input text
+	- icon yang sesuai
+	v kirim gambar
+	v kalau jam gak diisi, NaN
+RECORD
+	- info di marker
+BROWSE
+	- ambil foto dan background
+NOW
+	v add archive
+	- info di marker
+VIEW
+	v journey NULL
+	- hitungan jam
+GAMBAR
+	- defaultnya thumbnail
+	- defaultnya profpic
+ACCOUNT
+	- ganti foto profpic
+
+SERVER
+	- upload ke hosting

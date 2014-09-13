@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <title>HOP</title>
-  <link rel="stylesheet" href="themes/koko2.min.css" />
-  <link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
-  <link rel="stylesheet" type="text/css" href="css/jquery.mobile.structure-1.4.3.min.css" />
-  <!--link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.2.min.css" /-->
-  <link rel="stylesheet" type="text/css" href="css/index.css" />
-  <link rel="stylesheet" type="text/css" href="css/main.css" />
-  <link rel="stylesheet" type="text/css" href="css/font/typo.css" />
-  <link rel="stylesheet" type="text/css" href="css/responsive.css">
-  <script src="js/modernizr.custom.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>HOP</title>
+<link rel="stylesheet" href="themes/koko2.min.css" />
+<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+<link rel="stylesheet" type="text/css" href="css/jquery.mobile.structure-1.4.3.min.css" />
+<!--link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.2.min.css" /-->
+<link rel="stylesheet" type="text/css" href="css/index.css" />
+<link rel="stylesheet" type="text/css" href="css/main.css" />
+<link rel="stylesheet" type="text/css" href="css/font/typo.css" />
+<link rel="stylesheet" type="text/css" href="css/responsive.css">
+<script src="js/modernizr.custom.js"></script>
     <!--[if lt IE 9]>
 
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -27,14 +27,14 @@
 	<div data-role="header" data-position="fixed" data-tap-toggle="false">
    		<div class="headpage">
       		<div><a href="#myPanel"><img class="side_menu" src="img/side_menu_btn.png"></a></div>
-      		<div class="browse_text">Create Trip</div>
+      		<div class="browse_text">Record Trip</div>
     	</div><!-- /header -->
   </div>
 
 	<div role="main" id="view-content">
       <!--********************** pop up  *******************************************************-->
         <div data-role="popup" id="popupJudul">
-             <input type="text" name="text-2" id="text-judul" onchange="gantiJudul('text-judul','judulRoute','add title...','judul')" value="" placeholder="judul"  data-enhanced="true">
+             <input type="text" name="text-2" id="text-judul" onchange="gantiJudul('text-judul','judulRoute','add title...','judul','createRouteRec')" value="" placeholder="judul"  data-enhanced="true">
         </div>
 
         <div data-role="popup" id="popupCat">
@@ -56,7 +56,7 @@
               <label for="checkbox-v-2g"><img src="img/cat_nature.png">Nature</label>
               <input data-iconpos="right "type="checkbox" name="rom" id="checkbox-v-2h">
               <label for="checkbox-v-2h"><img src="img/cat_romantic.png">Romantic</label>
-              <div class="tombolPopup"><a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-a lebar50" data-rel="back">Cancel</a><a href="#" onclick="cebok('listgrup','tagsRoute')" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-a lebar50" data-rel="back">Done</a>
+              <div class="tombolPopup"><a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-a lebar50" data-rel="back">Cancel</a><a href="#" onclick="cebok('listgrup','tagsRoute','createRouteRec')" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-a lebar50" data-rel="back">Done</a>
               </div>
             </fieldset>
           </form>
@@ -80,7 +80,7 @@
             </fieldset>
           </form>
                <div class="tombolPopup"><a href="#" class="ui-btn ui-corner-all ui-btn-inline ui-btn-a lebar50" data-rel="back">Cancel</a>
-                <a href="#" onclick="cebokbring('listgrup2','bringsRoute')" class="ui-btn ui-corner-all ui-btn-inline ui-btn-a lebar50" data-rel="back">Done</a></div>
+                <a href="#" onclick="cebokbring('listgrup2','bringsRoute','createRouteRec')" class="ui-btn ui-corner-all ui-btn-inline ui-btn-a lebar50" data-rel="back">Done</a></div>
         </div> 
 
         <div data-role="popup" id="popupJam">
@@ -98,7 +98,7 @@
                 <input class="lebar50" type="text" name="menitEnd" id="menitEnd" value="" placeholder="59"  data-enhanced="true">
               </form>
           </div>
-          <div class="tombolPopup"><a href="#" class="ui-btn ui-corner-all ui-btn-inline ui-btn-a lebar50" data-rel="back">Cancel</a><a href="#" onclick="gantiJam()" value="" class="ui-btn ui-corner-all ui-btn-inline ui-btn-a lebar50" data-rel="back">Done</a>
+          <div class="tombolPopup"><a href="#" class="ui-btn ui-corner-all ui-btn-inline ui-btn-a lebar50" data-rel="back">Cancel</a><a href="#" onclick="gantiJam('createRouteRec')" value="" class="ui-btn ui-corner-all ui-btn-inline ui-btn-a lebar50" data-rel="back">Done</a>
           </div>
         </div> 
 
@@ -110,21 +110,21 @@
               <!--<div><img src="img/rent.png"> rent</div>
               <div><form>Rp.<input class="lebar50" type="text" name="hargaRent" id="hargaRent" value="" placeholder="18"  data-enhanced="true"></form></div>-->
               <div class="tombolPopup"><a href="#" class="ui-btn ui-corner-all ui-btn-inline ui-btn-a lebar50" data-rel="back">Cancel</a>
-              <a href="#" onclick="gantiBiaya()" class="ui-btn ui-corner-all ui-btn-inline ui-btn-a lebar50" data-rel="back">Done</a></div>
+              <a href="#" onclick="gantiBiaya('createRouteRec')" class="ui-btn ui-corner-all ui-btn-inline ui-btn-a lebar50" data-rel="back">Done</a></div>
       </div> 
 
         <div data-role="popup" id="popupket">
             <form>
                 <textarea value="" name="textarea-6" placeholder="isilah keterangan" data-enhanced="true" id="ket2"></textarea>
             </form>
-            <div class="tombolPopup"><a href="#" class="ui-btn ui-corner-all ui-btn-inline ui-btn-a lebar50" data-rel="back">Cancel</a><a href="#" onclick="gantiJudul('ket2','ketRoute','keterangan ...','ket')" class="ui-btn ui-corner-all ui-btn-inline ui-btn-a lebar50" data-rel="back">Done</a>
+            <div class="tombolPopup"><a href="#" class="ui-btn ui-corner-all ui-btn-inline ui-btn-a lebar50" data-rel="back">Cancel</a><a href="#" onclick="gantiJudul('ket2','ketRoute','keterangan ...','ket','createRouteRec')" class="ui-btn ui-corner-all ui-btn-inline ui-btn-a lebar50" data-rel="back">Done</a>
             </div>
         </div>
       <!-- gambar utama & deskripsi -->
    		<div class='view1' id="picRoute">
         <div class="judul_view"><a style="color:white;" href="#popupJudul" data-rel="popup" data-transition="pop"><span id="judulRoute">Add title ...</span></a></div>
         <div class="add_pic"><a style="color:#ffffff !important;" onclick="document.getElementById('take-picture').click()" href="">ADD<br />MAIN PICTURE</a></div>
-        <div class="ui-input-hide"><input type="file" id="take-picture" accept="image/*;capture=camera" style="display:none;" onchange="loadImageFileAsURL()"></div>
+        <div class="ui-input-hide"><input type="file" id="take-picture" accept="image/*;capture=camera" style="display:none;" onchange="loadImageFileAsURL('createRouteRec')"></div>
         <div class="cat_img"><a style="color:#ffffff !important;" href="#popupCat" data-rel="popup" data-transition="pop"><span id="tagsRoute">add tags ...</span></a></div> 
         <div class="map_img"><a href="" onclick="alert('peta belum tersedia')"><img class="img_btn" src="img/map_btn.png" /></a></div>
         <div class="gal_img"><a href="" onclick="document.getElementById('take-picture').click()" ><img class="img_btn" src="img/gallery_btn.png" /></a></div>
@@ -180,7 +180,6 @@
 	<div data-role="footer" data-position="fixed" data-tap-toggle="false">
 		<div data-role="navbar">
         <ul>
-            <li id="btnAddPlace" class="img_nav"><a href="#" onclick="pindahAddplace()" data-icon="false">&#43; ADD PLACE</a></li>
             <li id="btnFinish" class="img_nav"><a href="#" onclick="finishCreate()" data-icon="false">FINISH</a></li>
         </ul>
     	</div><!-- /navbar -->
@@ -194,66 +193,18 @@
     <script type="text/javascript">
       window.onload = function() {
         $('#myPanel').load('comp_sidelink.html');
-        if (localStorage.getItem("createRoute") !== null) {
+        if (localStorage.getItem("createRouteRec") !== null) {
           //ambil data
-          var totiket = 0;
-          var totmakan = 0;
-          var createR = JSON.parse(localStorage.getItem('createRoute'));
+          var createR = JSON.parse(localStorage.getItem('createRouteRec'));
           console.log(createR);
-          //places
-          for (var place in createR.places){
-            addPlaces(place);
-            //change isi
-            $('#judulTempat-'+place).html(createR.places[place].judul);
-            $('#ket_tempat-'+place).html(createR.places[place].ket);
-            //jam
-            $('#jamStart2_tempat-'+place).html(createR.places[place].jamSt);
-            $('#menitStart2_tempat-'+place).html(createR.places[place].menitSt);
-            $('#jamEnd2_tempat-'+place).html(createR.places[place].jamEnd);
-            $('#menitEnd2_tempat-'+place).html(createR.places[place].menitEnd);
-            gantiDurasi(createR.places[place].jamSt,createR.places[place].menitSt,createR.places[place].jamEnd,createR.places[place].menitEnd,place);
-            //tiket
-            $('#hargaTiket2_tempat-'+place).html(int_to_rp(createR.places[place].tiket));
-            $('#hargaFood2_tempat-'+place).html(int_to_rp(createR.places[place].makan));
-            //hitung total tiket-makan
-            totiket += parseInt(createR.places[place].tiket);
-            totmakan += parseInt(createR.places[place].makan);
-            //pic
-            $('#picPlace-'+place).css('background-image', 'url('+createR.places[place].pic+')');
-          }
-          $('#judulRoute').html(createR.judul);
-          if (createR.tags.length > 0)
-            genTags(createR.tags,'tagsRoute');
-          else
-            $('#tagsRoute').html('add tags...');  
-          if (createR.brings.length > 0)
-            genBrings(createR.brings,'bringsRoute');
-          else
-            $('#tagsRoute').html('add tags...');
-          $('#ketRoute').html(createR.ket);
-          //jam
-          $('#jamStart2').html(createR.places[0].jamSt);
-          $('#menitStart2').html(createR.places[0].menitSt);
-          $('#jamEnd2').html(createR.places[place].jamEnd);
-          $('#menitEnd2').html(createR.places[place].menitEnd);
-          gantiDurasi(createR.places[0].jamSt,createR.places[0].menitSt,createR.places[place].jamEnd,createR.places[place].menitEnd);
-          createR['jamSt'] = createR.places[0].jamSt;
-          createR['menitSt'] = createR.places[0].menitSt;
-          createR['jamEnd'] = createR.places[place].jamEnd;
-          createR['menitEnd'] = createR.places[place].menitEnd;
-          //tiket
-          $('#hargaTiket2').html(int_to_rp(totiket));
-          $('#hargaFood2').html(int_to_rp(totmakan));
-          createR['tiket'] = totiket;
-          createR['makan'] = totmakan;
-          //pic
-          $('#picRoute').css('background-image', 'url('+createR['pic']+')');
+          initViewCreate(createR);
           //simpan
-          localStorage.setItem('createRoute', JSON.stringify(createR));  
+          localStorage.setItem('createRouteRec', JSON.stringify(createR));  
         }else{
           //new initialize
           var createR = new Object();
           var vuserid = JSON.parse(localStorage.getItem('logged'));
+          var startR = JSON.parse(localStorage.getItem('startRec'));
           createR['id'] = vuserid.id;
           createR['judul'] = 'add title...';
           createR['ket'] = 'keterangan...';
@@ -263,21 +214,105 @@
           createR['menitSt'] = '00';
           createR['jamEnd'] = '00';
           createR['menitEnd'] = '00';
-          createR['tiket'] = 0;
-          createR['makan'] = 0;
+          createR['tiket'] = '0';
+          createR['makan'] = '0';
           createR['brings'] = [];
-          createR['places'] = [];
-          localStorage.setItem('createRoute', JSON.stringify(createR));  
+          var places = new Array();
+          for (var i in startR){
+            var placesR = new Object();
+            placesR['key'] = i;
+            placesR['judul'] = startR[i].nama;
+            placesR['ket'] = 'add keterangan';
+            placesR['pic'] = 'img/a.jpg';
+            placesR['lat'] = startR[i].lat;
+            placesR['lon'] = startR[i].lon;
+            placesR['kota'] = startR[i].kota;
+            placesR['durasi'] = 0;
+            var waktu = startR[i].time;
+            placesR['jamSt'] = waktu.charAt(0)+waktu.charAt(1);
+            placesR['menitSt'] = waktu.charAt(3)+waktu.charAt(4);
+            if (i < startR.length-1) {
+              var j = parseInt(i)+1;
+              var waktua = startR[j].time;
+              placesR['jamEnd'] = waktua.charAt(0)+waktua.charAt(1);
+              placesR['menitEnd'] = waktua.charAt(3)+waktua.charAt(4);
+            }else{
+              placesR['jamEnd'] = '00';
+              placesR['menitEnd'] = '00';
+            }
+            placesR['tiket'] = 0;
+            placesR['makan'] = 0;
+            console.log(placesR);
+            places.push(placesR);
+          };
+          createR['places'] = places;
+          //
+          initViewCreate(createR);
+          //simpan
+          localStorage.setItem('createRouteRec', JSON.stringify(createR));
+          //init  
         }
       };
+      function initViewCreate(createR){
+        var totiket = 0;
+        var totmakan = 0;
+        for (var place in createR.places){
+          addPlaces(place, 'createRouteRec');
+          //change isi
+          $('#judulTempat-'+place).html(createR.places[place].judul);
+          $('#ket_tempat-'+place).html(createR.places[place].ket);
+          //jam
+          $('#jamStart2_tempat-'+place).html(createR.places[place].jamSt);
+          $('#menitStart2_tempat-'+place).html(createR.places[place].menitSt);
+          $('#jamEnd2_tempat-'+place).html(createR.places[place].jamEnd);
+          $('#menitEnd2_tempat-'+place).html(createR.places[place].menitEnd);
+          gantiDurasi(createR.places[place].jamSt,createR.places[place].menitSt,createR.places[place].jamEnd,createR.places[place].menitEnd,place);
+          //tiket
+          $('#hargaTiket2_tempat-'+place).html(int_to_rp(createR.places[place].tiket));
+          $('#hargaFood2_tempat-'+place).html(int_to_rp(createR.places[place].makan));
+          //hitung total tiket-makan
+          totiket += parseInt(createR.places[place].tiket);
+          totmakan += parseInt(createR.places[place].makan);
+          //pic
+          $('#picPlace-'+place).css('background-image', 'url('+createR.places[place].pic+')');
+        }
+        $('#judulRoute').html(createR.judul);
+        if (createR.tags.length > 0)
+          genTags(createR.tags,'tagsRoute');
+        else
+          $('#tagsRoute').html('add tags...');  
+        if (createR.brings.length > 0)
+          genBrings(createR.brings,'bringsRoute');
+        else
+          $('#tagsRoute').html('add tags...');
+        $('#ketRoute').html(createR.ket);
+        //jam
+        $('#jamStart2').html(createR.places[0].jamSt);
+        $('#menitStart2').html(createR.places[0].menitSt);
+        $('#jamEnd2').html(createR.places[place].jamEnd);
+        $('#menitEnd2').html(createR.places[place].menitEnd);
+        gantiDurasi(createR.places[0].jamSt,createR.places[0].menitSt,createR.places[place].jamEnd,createR.places[place].menitEnd);
+        createR['jamSt'] = createR.places[0].jamSt;
+        createR['menitSt'] = createR.places[0].menitSt;
+        createR['jamEnd'] = createR.places[place].jamEnd;
+        createR['menitEnd'] = createR.places[place].menitEnd;
+        //tiket
+        $('#hargaTiket2').html(int_to_rp(totiket));
+        $('#hargaFood2').html(int_to_rp(totmakan));
+        createR['tiket'] = totiket;
+        createR['makan'] = totmakan;
+        //pic
+        $('#picRoute').css('background-image', 'url('+createR['pic']+')');
+      }
       function finishCreate(){
-        var createR = JSON.parse(localStorage.getItem('createRoute'));
+        var createR = JSON.parse(localStorage.getItem('createRouteRec'));
         //save
-        $.post("http://localhost/htdocs/trippp/trip/make/"+createR.id, { tripadd:JSON.stringify(createR) }, function( data ) {
+        $.post("http://localhost/htdocs/trippp/trip/make/"+createR.id+"/1", { tripadd:JSON.stringify(createR) }, function( data ) {
             var resp = JSON.parse(data);
             console.log(resp.response);
             //hapus
-            localStorage.removeItem('createRoute');
+            localStorage.removeItem('createRouteRec');
+            localStorage.removeItem('startRec');
             //pindah
             alert('Trip has been saved');
             pindahHal('browse');
@@ -285,6 +320,5 @@
       }
     </script>
 </div><!-- /page -->
-
 </body>
 </html>
