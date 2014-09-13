@@ -87,7 +87,7 @@ function setSignUp(uname,pwd,imel,showid){
           console.log(logged);
           localStorage.setItem('logged', JSON.stringify(logged));
           //redirect
-          window.location = "browse.html";
+          window.location = "demo.html";
       }else{
           alert("Failed to signup");
       }
