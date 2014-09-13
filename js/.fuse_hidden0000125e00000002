@@ -279,11 +279,10 @@ function initMap(imaps,divid,lat,lon) {
           if (resp.response) {
               //save to storage
               localStorage.setItem('browselist', JSON.stringify(resp.data));
-              //console.log(resp.data);
+              console.log(resp.data);
               //tampilkan
               var strContent = "";
               for (key in resp.data){
-                var strContent = "";
                 strContent += "<li><a onclick='pindahView("+resp.data[key].idTrip+")' href='#'><div class='browse1' id=\"viewlist-"+resp.data[key].idTrip+"\"><p>"+resp.data[key].judul+"</p><div class='circleBase type1'></div><div class='ratingc'>";
                   //cost
                   strContent += "<div>";
@@ -304,13 +303,8 @@ function initMap(imaps,divid,lat,lon) {
                   }
                   strContent += "</div>";
                 strContent += "</div><div id='mapbtn'><img src='img/map_btn.png'></div></div></a></li>";
-                $("#content_browse").append(strContent);
-                //change bg
-                if (resp.data[key].coverfoto){
-                  $('#viewlist-'+resp.data[key].idTrip).css('background-image', 'url(\"http://localhost/htdocs/trippp/'+resp.data[key].coverfoto+'\")');
-                }
               }
-              //$("#content_browse").html(strContent);
+              $("#content_browse").html(strContent);
           }else{
               alert("Nothing trips nearby right now");
           }
@@ -674,7 +668,7 @@ function getTrip(idtrip){
           //tampilkan
           var strContent = "";
           //judul, thumbfoto, coverphoto
-          strContent += "<div class='view1' id='picRoute'><div class='judul_view'>"+resp.data.judul+"</div><div class='circleBase type1'></div><div class='ratingc'>";
+          strContent += "<div class='view1'><div class='judul_view'>"+resp.data.judul+"</div><div class='circleBase type1'></div><div class='ratingc'>";
           //cost
             strContent += "<div>";
             for (var b=1; b<=5; b++){
@@ -709,7 +703,7 @@ function getTrip(idtrip){
      var journeys = resp.data.journeys;
      for (var b=0; b<places.length; b++){
       strContent += "<li class='ui-li-static ui-body-inherit'>";
-      strContent += "<div class='view2' id=\"picPlace-"+places[b].idPlace+"\"><div class='judul_tempat'>"+places[b].nama+"</div><div class='text-tempat cat_img'>"+places[b].keterangan+"</div><div class='map_img'><div><img src='img/gallery_btn.png'></div><div><img src='img/map_btn.png'></div></div></div>";
+      strContent += "<div class='view2'><div class='judul_tempat'>"+places[b].nama+"</div><div class='text-tempat cat_img'>"+places[b].keterangan+"</div><div class='map_img'><div><img src='img/gallery_btn.png'></div><div><img src='img/map_btn.png'></div></div></div>";
       dt = new getHM(places[b].durasi,places[b].waktumulai);
       strContent += "<div class='rwd2' style='margin-top:10px'><div class='ui-block-a'><img src='img/time.png'></div><div class='ui-block-b'><div class='stat_text'><span class='dina_text'>"+dt.hours+"</span>h</div></div><div class='ui-block-c'><div class='stat_text'><span class='dina_text'>"+dt.mins+"</span>m</div></div><div class='ui-block-d'></div><div class='ui-block-e'><div class='stat_text'><span class='dina_text'>"+dt.clock[0]+":"+dt.clock[1]+"</span>-<span class='dina_text'>"+pad_2(dt.clhours)+":"+pad_2(dt.clmins)+"</span></div></div><div style='clear:both'></div></div>";
       strContent += "<div class='rwd3'><div class='ui-block-a'><img src='img/ticket.png'></div><div class='ui-block-b'><div class='stat_text'>Rp.<span class='dina_text'>"+int_to_rp(places[b].danatiket)+"</span></div></div><div class='ui-block-c'></div><div class='ui-block-d'><img src='img/food_bev.png'></div><div class='ui-block-e'><div class='stat_text'>Rp.<span class='dina_text'>"+int_to_rp(places[b].danamakan)+"</span></div></div><div style='clear:both'></div></div>";
@@ -720,12 +714,7 @@ function getTrip(idtrip){
      };
      strContent += "</ul></div>";
      //console.log(strContent);
-     $("#view-content").html(strContent);
-     //ganti bg
-     $('#picRoute').css('background-image', 'url(http://localhost/htdocs/trippp/'+resp.data.coverfoto+')');
-     for (var b=0; b<places.length; b++){
-      $('#picPlace-'+places[b].idPlace).css('background-image', 'url(http://localhost/htdocs/trippp/'+places[b].foto[0]+')');
-     }
+          $("#view-content").html(strContent);
       }else{
           alert("Nothing trips right now");
       }

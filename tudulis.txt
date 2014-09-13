@@ -8,22 +8,22 @@ CREATE
 	- refresh yang rangkuman saat ubah isian
 	v kurang tombol finish
 	- default input text
-	- icon yang sesuai
+	v icon yang sesuai
 	v kirim gambar
 	v kalau jam gak diisi, NaN
 RECORD
-	- info di marker
+	v info di marker
 BROWSE
-	- ambil foto dan background
+	v ambil foto dan background
 NOW
 	v add archive
-	- info di marker
+	v info di marker
 VIEW
 	v journey NULL
 	- hitungan jam
 GAMBAR
-	- defaultnya thumbnail
-	- defaultnya profpic
+	v defaultnya thumbnail
+	v defaultnya profpic
 ACCOUNT
 	- ganti foto profpic
 
