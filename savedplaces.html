@@ -3,7 +3,7 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>My Hops</title>
+<title>HOP</title>
 <link rel="stylesheet" href="themes/koko2.min.css" />
 <link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
 <link rel="stylesheet" type="text/css" href="css/jquery.mobile.structure-1.4.3.min.css" />
@@ -22,15 +22,15 @@
     <nav class="cbp-spmenu cbp-spmenu-horizontal cbp-spmenu-bottom" id="menuSort">
           <ul class="push-y sortmenu" data-role="listview">
             <li><div data-role="list-divider" id="listdiv">SORT BY</div></li>
-            <li class="list_sort"><a href="#" onclick="sortListTrip(1)" class="ui-btn ui-btn-icon-left ui-custom-icon ui-arrow-b ui-nodisc-icon">Rating</a></li>
-            <li class="list_sort"><a onclick="sortListTrip(2)" href="#" class="ui-btn ui-btn-icon-left ui-custom-icon ui-arrow-d ui-nodisc-icon">Distance</a></li>
-            <li class="list_sort"><a onclick="sortListTrip(3)" href="#" class="ui-btn ui-btn-icon-left ui-custom-icon ui-arrow-e ui-nodisc-icon">Cost</a></li>
-            <li class="list_sort"><a href="#" onclick="sortListTrip(4)" class="ui-btn ui-btn-icon-left ui-custom-icon ui-arrow-f ui-nodisc-icon">Duration</a></li>
+            <li class="list_sort"><a href="#" onclick="sortListPlace(1)" class="ui-btn ui-btn-icon-left ui-custom-icon ui-arrow-b ui-nodisc-icon">Rating</a></li>
+            <li class="list_sort"><a onclick="sortListPlace(2)" href="#" class="ui-btn ui-btn-icon-left ui-custom-icon ui-arrow-d ui-nodisc-icon">Distance</a></li>
+            <li class="list_sort"><a onclick="sortListPlace(3)" href="#" class="ui-btn ui-btn-icon-left ui-custom-icon ui-arrow-e ui-nodisc-icon">Cost</a></li>
+            <li class="list_sort"><a href="#" onclick="sortListPlace(4)" class="ui-btn ui-btn-icon-left ui-custom-icon ui-arrow-f ui-nodisc-icon">Duration</a></li>
           </ul>
     </nav>
     <nav class="cbp-spmenu cbp-spmenu-horizontal1 cbp-spmenu-bottom1" id="menuFind">
           <ul data-role="listview" id="listGrup">
-            <input type="search" name="searchTrip" id="searchTrip" value="">
+            <input type="search" name="searchPlace" id="searchPlace" value="">
            <legend class="text_legend">Filter By..</legend>
             <input data-iconpos="right "type="checkbox" name="edu" id="checkbox-v-2a" data-mini="true">
             <label for="checkbox-v-2a"><img src="img/cat_educational.png">Educational</label>
@@ -51,34 +51,30 @@
           </ul>
     </nav>
 
-  <div data-role="panel" id="myPanel" data-display="push"> 
+	<div data-role="panel" id="myPanel" data-display="push"> 
   </div> 
 
-
-  <div data-role="header" data-position="fixed">
-      <div class="headpage">
-        <div><a href="#myPanel"><img class="side_menu" src="img/side_menu_btn.png"></a></div>
-        <div class="side_menu2"><a href="#"><img src="img/new_hop.png"></a></div>
-        <div class="ui-grid-a">
-              <div class="ui-block-a nav_hops"><a style="color:#000000 !important;" href=""><span class="mar_left">Created</span></a></div>
-              <div class="ui-block-b nav_hops"><a style="color:#000000 !important;" href=""><span class="mar_right">My Hops</span></a></div>
-        </div>
-      </div><!-- /header -->
+	<div data-role="header" data-position="fixed" data-tap-toggle="false">
+    <div class="headpage">
+      <div><a href="#myPanel"><img class="side_menu" src="img/side_menu_btn.png"></a></div>
+      <div class="browse_text">Saved Place</div>
+    </div><!-- /header -->
   </div>
-
-  <div role="main">
+    
+	<div role="main">
       <ul data-role="listview" data-icon="false" id="content_browse">
+      
       </ul>
   </div>
 
-  <div data-role="footer" data-position="fixed">
-    <div data-role="navbar">
+	<div data-role="footer" data-position="fixed" data-tap-toggle="false" data-fullscreen="false"> 
+		<div data-role="navbar" data-tap-toggle="false" data-fullscreen="false">
         <ul>
-            <li id="showSort" class="img_nav"><a href="#" class="ui-btn" data-icon="false"><img src="img/sort.png">SORT</a> </li>
-            <li id="showFind" class="img_nav"><a href="#" class="ui-btn" data-icon="false"><img src="img/find.png">FIND</a></li>
+            <li id="showSort" class="img_nav"><a href="#" class="ui-btn" data-icon="false"><img  src="img/sort.png">SORT</a> </li>
+            <li id="showFind" class="img_nav"><a href="#" class="ui-btn" data-icon="false"><img  src="img/find.png">FIND</a></li>
         </ul>
-      </div><!-- /navbar -->
-  </div><!-- /footer -->
+    	</div><!-- /navbar -->
+	</div><!-- /footer -->
     
     <script src="js/jquery-1.11.1.min.js"></script>
     <script src="js/jquery.mobile-1.4.3.min.js"></script>
@@ -86,12 +82,11 @@
     <script src="js/classie.js"></script>
 
     <script type="text/javascript">
-      var logged = JSON.parse(localStorage.getItem('logged'));
-      var uid = logged.id;
       var menuSort = document.getElementById('menuSort'),
         showSort = document.getElementById('showSort');
       var menuFind = document.getElementById('menuFind'),
         showFind = document.getElementById('showFind');
+      var uid;
       showSort.onclick = function() {
         classie.toggle( menuSort, 'cbp-spmenu-open' );
         classie.remove( menuFind, 'cbp-spmenu-open' );
@@ -102,17 +97,15 @@
         if(!classie.has( menuFind, 'cbp-spmenu-open' )){
           //update list
           var checked = getCheckMulti('listGrup');
-          console.log(checked.join());
-          getMyListTrip(uid,checked.join());
+          var qword = $('#searchPlace').val();
+          getSavedPlace(uid,checked.join(),qword);
         }
       };
-      //
-      var curLat, curLon;
       window.onload = function() {
         var checked = getCheckMulti('listGrup');
-        //
-        $('#myPanel').load('comp_sidelink.html');
-        getMyListTrip(uid,checked.join());
+        var qword = $('#searchPlace').val();
+        uid = getValue('uid');
+        getSavedPlace(uid,checked.join(),qword);
       };
     </script>
 </div><!-- /page -->

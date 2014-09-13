@@ -28,6 +28,19 @@ body, .ui-btn {
     padding: 10px;
 }
 
+.place1 {
+    height: 150px !important;
+    width: 100% !important;
+    margin-bottom: 0px !important;
+    margin-top: 0px !important;
+    background-image: url(../img/a.jpg) !important;
+    background-size: 100% 100%;
+    color: #ffffff;
+    text-align: center;
+    font-size: 30px;
+    padding: 10px;
+}
+
 .ui-listview > li p{
     margin: 0 auto;
     margin-bottom: 10px;
@@ -516,58 +529,23 @@ height: 300px !important;
 }
 .ui-popup .ui-btn { border: none !important; font-size: 10px !important;}
 
-.ui-popup .ui-listview>.ui-li-static,.ui-listview>li>a.ui-btn {
-border-width: 0px 0 0 !important;
-border-style: solid;}
+.ui-popup .ui-listview >.ui-li-static,.ui-listview > li > a.ui-btn {
+    border-width: 0px 0 0 !important;
+    border-style: solid;
+}
 
 .ui-popup .ui-checkbox{
     height: 25px !important;
 }
-.ui-popup img{height:15px; width:auto; margin-right: 20px;
+.ui-popup img{
+    height:15px; width:auto; margin-right: 20px;
 }
 
-
-
-#popupBring-popup {
-width: 100% !important;
-height: 300px !important;
-}
-
-#popupJam-popup {
-width: 100% !important;
-height: 300px !important;
-}
-
-
-#popupTiket-popup {
-width: 100% !important;
-height: 300px !important;
-}
-
-#popupVeh-popup {
-width: 100% !important;
-height: 300px !important;
-}
-
-#popupket-popup {
-width: 100% !important;
-height: 300px !important;
-}
-
-#popupTiket_tempat-popup {
-    width: 100% !important;
-height: 300px !important;
-}
-
-#popupket_tempat-popup{
-    width: 100% !important;
-height: 300px !important;
-}
-
-#popupket_Veh-popup{
+#popupBring-popup, #popupJam-popup, #popupTiket-popup, #popupVeh-popup, #popupket-popup, #popupTiket_tempat-popup, #popupket_tempat-popup, #popupket_Veh-popup {
     width: 100% !important;
     height: 300px !important;
 }
+
 ::-webkit-input-placeholder {
    color: #ffd42a;
 }
@@ -644,4 +622,10 @@ margin: 0px;
 }
 .popbring{
     margin-left: 10px;
+}
+#btnAddPlace a{
+    background-color: #FFD42A !important;
+}
+#btnFinish a{
+    background-color: #FFD42A !important;
 }
