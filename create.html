@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>HOP</title>
-<link rel="stylesheet" href="themes/koko2.min.css" />
-<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
-<link rel="stylesheet" type="text/css" href="css/jquery.mobile.structure-1.4.3.min.css" />
-<!--link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.2.min.css" /-->
-<link rel="stylesheet" type="text/css" href="css/index.css" />
-<link rel="stylesheet" type="text/css" href="css/main.css" />
-<link rel="stylesheet" type="text/css" href="css/font/typo.css" />
-<link rel="stylesheet" type="text/css" href="css/responsive.css">
-<script src="js/modernizr.custom.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>HOP</title>
+  <link rel="stylesheet" href="themes/koko2.min.css" />
+  <link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+  <link rel="stylesheet" type="text/css" href="css/jquery.mobile.structure-1.4.3.min.css" />
+  <!--link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.2.min.css" /-->
+  <link rel="stylesheet" type="text/css" href="css/index.css" />
+  <link rel="stylesheet" type="text/css" href="css/main.css" />
+  <link rel="stylesheet" type="text/css" href="css/font/typo.css" />
+  <link rel="stylesheet" type="text/css" href="css/responsive.css">
+  <script src="js/modernizr.custom.js"></script>
     <!--[if lt IE 9]>
 
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -123,7 +123,8 @@
       <!-- gambar utama & deskripsi -->
    		<div class='view1'>
         <div class="judul_view"><a style="color:white;" href="#popupJudul" data-rel="popup" data-transition="pop"><span id="judulRoute">Add title ...</span></a></div>
-        <div class="add_pic"><a style="color:#ffffff !important;" onclick="alert('cari view1 dan add_pic')" href="">ADD<br />MAIN PICTURE</a></div>
+        <div class="add_pic"><a style="color:#ffffff !important;" onclick="document.getElementById('take-picture').click()" href="">ADD<br />MAIN PICTURE</a></div>
+        <div class="ui-input-hide"><input type="file" id="take-picture" accept="image/*" style="display:none;" onchange="loadImageFileAsURL()"></div>
         <div class="cat_img"><a style="color:#ffffff !important;" href="#popupCat" data-rel="popup" data-transition="pop"><span id="tagsRoute">add tags ...</span></a></div> 
         <div class="map_img"><a href="" onclick="alert('peta belum tersedia')"><img class="img_btn" src="img/map_btn.png" /></a></div>
         <div class="gal_img"><a href=""><img class="img_btn" src="img/gallery_btn.png" /></a></div>
@@ -179,8 +180,7 @@
 	<div data-role="footer" data-position="fixed" data-tap-toggle="false">
 		<div data-role="navbar">
         <ul>
-            <li id="btnAddPlace" class="img_nav"><a href="#" onclick="pindahAddplace()" data-icon="false">&#43; ADD PLACE</a></li>
-            <li id="btnFinish" class="img_nav"><a href="#" onclick="finishCreate()" data-icon="false">FINISH</a></li>
+            <li id="btnAddPlace" class="img_nav"><a href="#" data-icon="false">&#43; ADD PLACE</a></li>
         </ul>
     	</div><!-- /navbar -->
 
@@ -278,7 +278,26 @@
             pindahHal('browse');
         }, "json");
       }
+	function loadImageFileAsURL(){
+      var fileSelected=document.getElementById("take-picture").files;
+        if (fileSelected.length>0)
+         {
+          var fileToLoad=fileSelected[0];
+          if(fileToLoad.type.match("image.*"))
+          {
+            var fileReader=new FileReader();
+            fileReader.onload=function(fileLoadedEvent)
+            {
+              // var imageLoaded=document.getElementById("blah");
+              // imageLoaded.src=fileLoadedEvent.target.result;
+              $('.view1').css('background-image', 'url('+fileLoadedEvent.target.result+')');
+            };
+            fileReader.readAsDataURL(fileToLoad);
+          }
+        }
+     }
     </script>
 </div><!-- /page -->
+
 </body>
 </html>
