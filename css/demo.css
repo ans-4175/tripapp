@@ -147,8 +147,8 @@ body, input, select, textarea, button, .ui-btn {font-family: 'ostrich_sansmedium
 .getstarted{
     width: 140px;
     margin:0 auto;
-    /*border: 1px solid white; 
-    border-radius: 5px;  */
+    border: 1px solid white; 
+    border-radius: 5px;
     position: relative;
     top:300px;
 }
