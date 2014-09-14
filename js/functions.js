@@ -76,7 +76,7 @@ function statusHtmlStorage(name) {
 }
 
 function setSignUp(uname,pwd,imel,showid){
-  //ajax to create
+  //alert('signup = '+uname+' '+imel+' '+pwd);
   $('#'+showid).slideToggle();
   $.post("http://localhost/htdocs/trippp/user/signup", { username: uname, password:pwd,email:imel }, function( data ) {
       var resp = JSON.parse(data);
@@ -95,6 +95,7 @@ function setSignUp(uname,pwd,imel,showid){
 }
 
 function setLogin(uname,pwd,showid){
+  //alert('login : '+uname+' '+pwd);
   $('#'+showid).slideToggle();
   $.post("http://localhost/htdocs/trippp/user/login", { username:uname, password:pwd }, function( data ) {
         var resp = JSON.parse(data);
@@ -117,7 +118,7 @@ function logOut(){
   window.location = "index.html";
 }
 
-function getPin(pinColor,label = ''){
+function getPin(pinColor,label){
   //console.log(pinColor);
     var pinImage = new google.maps.MarkerImage("http://www.googlemapsmarkers.com/v1/"+label+"/"+pinColor+"/",
         new google.maps.Size(21, 34),
@@ -493,11 +494,13 @@ function initMap(imaps,divid,lat,lon) {
         //cek
         localStorage.removeItem('4sqlist');
   }
-  function addPlaces(iplace, storage = 'createRoute'){
+  function addPlaces(iplace, storage){
+        if (storage == undefined) storage="createRoute";
         $('#content_places').append(contentPlace(iplace,storage));
         $("#content_places").trigger('create');
       }
-      function contentPlace(idx,storage = 'createRoute'){  
+      function contentPlace(idx,storage){  
+        if (storage == undefined) storage="createRoute";
 var content = '<li>    <div class="view2" id=\"picPlace-'+idx+'\">      <div class=\"judul_tempat\"><a style=\"color:white;\" href=\"#popupjudulTempat-'+idx+'\" data-rel=\"popup\" data-transition=\"pop\"><span id=\"judulTempat-'+idx+'\">nama tempat ...</span></a></div><div class=\"ui-input-hide\"><input type=\"file\" id=\"take-picture-'+idx+'\" accept=\"image/*\" style=\"display:none;\" onchange=\"loadImagePlace(\''+idx+'\',\''+storage+'\')\"></div><div class=\"text-tempat cat_img\"><a style=\"color:#fff !important;\" href=\"#popupket_tempat-'+idx+'\" data-rel=\"popup\" data-transition=\"pop\"><span id=\"ket_tempat-'+idx+'\">keterangan ...</span></a></div>      <div class=\"map_img\">        <div class=\"map_img\"><a href=\"\"><img class=\"img_btn\" src=\"img/map_btn.png\" /></a></div>        <div class=\"gal_img\"><a href=\"\" onclick=\"document.getElementById(\'take-picture-'+idx+'\').click()\"><img class=\"img_btn\" src=\"img/gallery_btn.png\" /></a></div>      </div>    </div>    <div class=\"rwd2\" style=\"margin-top:10px;\">      <a style=\"color:#000 !important;\" href=\"#popupJam_tempat-'+idx+'\" data-rel=\"popup\" data-transition=\"pop\">        <div class=\"ui-block-a\"><img src=\"img/time.png\"></div>        <div class=\"ui-block-b\"><div class=\"stat_text\"><span class=\"dina_text\" id=\"dina_jam'+idx+'\">24</span>h</div></div>        <div class=\"ui-block-c\"><div class=\"stat_text\"><span class=\"dina_text\" id=\"dina_men'+idx+'\">0</span>m</div></div>        <div class=\"ui-block-d\"></div>        <div class=\"ui-block-e\"><div class=\"stat_text\"><span class=\"dina_text\" id=\"jamStart2_tempat-'+idx+'\">00</span>.<span class=\"dina_text\" id=\"menitStart2_tempat-'+idx+'\">00</span>-<span class=\"dina_text\" id=\"jamEnd2_tempat-'+idx+'\">00</span>.<span class=\"dina_text\" id=\"menitEnd2_tempat-'+idx+'\">00</span></div></div>        <div style=\"clear:both\"></div>        </a>      </div><!-- grid jam -->    <div class=\"rwd3\">      <a style=\"color:#000 !important;\" href=\"#popupTiket_tempat-'+idx+'\" data-rel=\"popup\" data-transition=\"pop\">        <div class=\"ui-block-a\"><img src=\"img/ticket.png\"></div>        <div class=\"ui-block-b\"><div class=\"stat_text\">Rp.<span class=\"dina_text\" id=\"hargaTiket2_tempat-'+idx+'\">0</span></div>        </div>        <div class=\"ui-block-c\"></div>        <div class=\"ui-block-d\"><img src=\"img/food_bev.png\"></div>        <div class=\"ui-block-e\"><div class=\"stat_text\">Rp.<span class=\"dina_text\" id=\"hargaFood2_tempat-'+idx+'\">0</span></div></div>        <div style=\"clear:both\"></div>      </a>    </div><!-- grid harga -->    <!--div class=\"rwd4\">    <a style=\"color:#000 !important;\" href=\"#popupVeh\" data-rel=\"popup\" data-transition=\"pop\">      <div class=\"ui-block-a\"><span id=\"imgveh\"><img src=\"img/vehcl_bus.png\"></span></div></a>    <a style=\"color:#000 !important;\" href=\"#popupVeh_judul\" data-rel=\"popup\" data-transition=\"pop\">      <div class=\"ui-block-b dina_text\"><span id=\"judul-textveh\">Angkot</span><span>A</span> - <span>B</span></div></a>      <div style=\"clear:both\"></div>    </div>    <div class=\"text-veh\"><a style=\"color:#000 !important;\" href=\"#popupket_Veh\" data-rel=\"popup\" data-transition=\"pop\"><span id=\"ket_vehicle\">keterangan ...</a></span></div-->    <!--INI ADALAH POP UP-->    <div data-role=\"popup\" id=\"popupjudulTempat-'+idx+'\">      <input type=\"text\" name=\"text-2\" id=\"text-judultempat-'+idx+'\" onchange=\"gantiJudulTempat(\'text-judultempat-\',\'judulTempat-\',\'add title...\',\'judul\','+idx+',\''+storage+'\')\" value=\"\" placeholder=\"judul\" data-enhanced=\"true\">    </div>     <div data-role=\"popup\" id=\"popupJam_tempat-'+idx+'\">      <div class=\"waktu_mulai text_cen margin_top_bot\"><img src=\"img/time.png\"><span class=\"mulai_text\">start time</span></div>      <div class=\"waktu_mulai_form\">        <input class=\"lebar50\" type=\"text\" name=\"jamStart\" id=\"jamStart_tempat-'+idx+'\" value=\"\" placeholder=\"18\"  data-enhanced=\"true\">        <input class=\"lebar50\" type=\"text\" name=\"menitStart\" id=\"menitStart_tempat-'+idx+'\" value=\"\" placeholder=\"59\"  data-enhanced=\"true\">      </div>      <div class=\"waktu_akhir text_cen margin_top_bot\"><img src=\"img/time.png\"><span class=\"end_text\">end time</span></div>      <div class=\"waktu_end_form\">        <input class=\"lebar50\" type=\"text\" name=\"jamEnd\" id=\"jamEnd_tempat-'+idx+'\" value=\"\" placeholder=\"18\"  data-enhanced=\"true\">        <input class=\"lebar50\" type=\"text\" name=\"menitEnd\" id=\"menitEnd_tempat-'+idx+'\" value=\"\" placeholder=\"59\"  data-enhanced=\"true\">      </div>      <div class=\"tombolPopup\"><a href=\"#\" class=\"ui-btn ui-corner-all ui-btn-inline ui-btn-a lebar50\" data-rel=\"back\">Cancel</a><a href=\"#\" onclick=\"gantiJamTempat('+idx+',\''+storage+'\');\" value=\"\" class=\"ui-btn ui-corner-all ui-btn-inline ui-btn-a lebar50\" data-rel=\"back\">Done</a>      </div>    </div>     <div data-role=\"popup\" id=\"popupTiket_tempat-'+idx+'\">      <div class=\"imgtiket text_cen margin_top_bot\"><img src=\"img/ticket.png\">ticket</div>      <div><form>Rp.<input class=\"lebar50\" type=\"text\" name=\"hargaTiket\" id=\"hargaTiket_tempat-'+idx+'\" value=\"\" placeholder=\"18\"  data-enhanced=\"true\"></form></div>      <div class=\"imgfood text_cen margin_top_bot\"><img src=\"img/food_bev.png\">food &amp; bev</div>      <div><form>Rp.<input class=\"lebar50\" type=\"text\" name=\"hargaFood\" id=\"hargaFood_tempat-'+idx+'\" value=\"\" placeholder=\"18\"  data-enhanced=\"true\"></form></div>      <!--<div><img src=\"img/rent.png\"> rent</div>      <div><form>Rp.<input class=\"lebar50\" type=\"text\" name=\"hargaRent\" id=\"hargaRent\" value=\"\" placeholder=\"18\"  data-enhanced=\"true\"></form></div>-->      <div class=\"tombolPopup\"><a href=\"#\" class=\"ui-btn ui-corner-all ui-btn-inline ui-btn-a lebar50\" data-rel=\"back\">Cancel</a>      <a href=\"#\" onclick=\"gantiBiayaTempat('+idx+',\''+storage+'\');\" class=\"ui-btn ui-corner-all ui-btn-inline ui-btn-a lebar50\" data-rel=\"back\">Done</a></div>    </div>     <div data-role=\"popup\" id=\"popupket_tempat-'+idx+'\">      <textarea value=\"\" name=\"textarea-6\" placeholder=\"Lorem ipsum dolor sit amet,\" data-enhanced=\"true\" id=\"ket_tempat2-'+idx+'\"></textarea>      <div class=\"tombolPopup\"><a href=\"#\" class=\"ui-btn ui-corner-all ui-btn-inline ui-btn-a lebar50\" data-rel=\"back\">Cancel</a><a href=\"#\" onclick=\"gantiJudulTempat(\'ket_tempat2-\',\'ket_tempat-\',\'add keterangan\',\'ket\','+idx+',\''+storage+'\')\" class=\"ui-btn ui-corner-all ui-btn-inline ui-btn-a lebar50\" data-rel=\"back\">Done</a>      </div>    </div>    <!--div data-role=\"popup\" id=\"popupVeh\">      <div class=\"text_popveh\">pick a vehicle</div>      <a href=\"\" onclick=\"gantiveh()\" class=\"ui-btn\" data-rel=\"back\"  ><img src=\"img/vehcl_bus.png\"></a>      <a href=\"\" onclick=\"gantiveh2()\" class=\"ui-btn\" data-rel=\"back\"><img src=\"img/vehcl_private.png\"></a>      <a href=\"\" onclick=\"gantiveh3()\" class=\"ui-btn\" data-rel=\"back\"><img src=\"img/vehcl_taxi.png\"></a>      <a href=\"\" onclick=\"gantiveh4()\" class=\"ui-btn\" data-rel=\"back\"><img src=\"img/vehcl_walk.png\"></a>      <a href=\"\" onclick=\"gantiveh5()\" class=\"ui-btn\" data-rel=\"back\"><img src=\"img/vehcl_bike.png\"></a>      <div style=\"clear:both\"></div>    </div>    <div data-role=\"popup\" id=\"popupVeh_judul\">      <input type=\"text\" name=\"text-2\" id=\"text-judulveh\" onchange=\"gantiJudul(\"text-judulveh\",\"judul-textveh\",\''+storage+'\')\" value=\"\" placeholder=\"judul\"  data-enhanced=\"true\">    </div>    <div data-role=\"popup\" id=\"popupket_Veh\">      <textarea value=\"\" name=\"textarea-6\" placeholder=\"Lorem ipsum dolor sit amet,\" data-enhanced=\"true\" id=\"ket_vehicle2\"></textarea>      <div class=\"tombolPopup\"><a href=\"#\" class=\"ui-btn ui-corner-all ui-btn-inline ui-btn-a lebar50\" data-rel=\"back\">Cancel</a><a href=\"#\" onclick=\"gantiJudul(\"ket_vehicle2\",\"ket_vehicle\")\" class=\"ui-btn ui-corner-all ui-btn-inline ui-btn-a lebar50\" data-rel=\"back\">Done</a>      </div>    </div-->  </li>';  
 return content;
 }
@@ -741,21 +744,24 @@ function simpanJSON(inputan,kolom,storage){
   jsonRec[kolom] = inputan;
   localStorage.setItem(storage, JSON.stringify(jsonRec));
 }
-function gantiJudul(intext,outtext,def = 'n/a',kolom,storage = 'createRoute'){
+function gantiJudul(intext,outtext,def,kolom,storage){
+  if (storage == undefined) storage="createRoute";
   var inputan = $('#'+intext).val();
   if (inputan=="") inputan = def;
   $('#'+outtext).html(inputan);
   //simpan di json
   simpanJSON(inputan,kolom,storage);
 }
-function gantiJudulTempat(intext,outtext,def = 'n/a',kolom,urut,storage = 'createRoute'){
+function gantiJudulTempat(intext,outtext,def,kolom,urut,storage){
+  if (storage == undefined) storage="createRoute";
   var inputan = $('#'+intext+urut).val();
   if (inputan=="") inputan = def;
   $('#'+outtext+urut).html(inputan);
   //simpan di json
   simpanTempatJSON(inputan,kolom,urut,storage);
 }
-function cebokbring(listgrup,popcek,storage = 'createRoute'){
+function cebokbring(listgrup,popcek,storage){
+  if (storage == undefined) storage="createRoute";
   var arrTags = getCheckMulti(listgrup);
   console.log(arrTags);
   var gambar = '';
@@ -776,7 +782,8 @@ function cebokbring(listgrup,popcek,storage = 'createRoute'){
   };
   simpanJSON(arrTags,'brings',storage);
 }
-function genBrings(arrTags,popcek = 'bringsRoute'){
+function genBrings(arrTags,popcek){
+  if (popcek == undefined) popcek="bringsRoute";
   var gambar = '';
   for ( var i = 0; i < arrTags.length;i++){
     switch(arrTags[i]){
@@ -794,7 +801,9 @@ function genBrings(arrTags,popcek = 'bringsRoute'){
     }
   };
 }
-function cebok(listgrup,popcek = 'tagsRoute',storage = 'createRoute'){
+function cebok(listgrup,popcek,storage){
+  if (storage == undefined) storage="createRoute";
+  if (popcek == undefined) popcek="tagsRoute";
   var arrTags = getCheckMulti(listgrup);
   console.log(arrTags);
   var gambar = '';
@@ -817,7 +826,8 @@ function cebok(listgrup,popcek = 'tagsRoute',storage = 'createRoute'){
   };
   simpanJSON(arrTags,'tags',storage);
 }
-function genTags(arrTags,popcek = 'tagsRoute'){
+function genTags(arrTags,popcek){
+  if (popcek == undefined) popcek="tagsRoute";
   var gambar = '';
   for ( var i = 0; i < arrTags.length;i++){
     switch(arrTags[i]){
@@ -848,7 +858,8 @@ function gantiveh(i){
   }
   $('#imgveh').html('<div><img src="img/'+gambar+'.png" /></div>')
 }
-function gantiDurasi(jSt,mSt,jEnd,mEnd,idx=''){
+function gantiDurasi(jSt,mSt,jEnd,mEnd,idx){
+  if (idx == undefined) idx="";
   var m2 = parseInt(mEnd);
   var m1 = parseInt(mSt);
   var j2 = parseInt(jEnd);
@@ -868,7 +879,8 @@ function gantiDurasi(jSt,mSt,jEnd,mEnd,idx=''){
   $('#dina_jam'+idx).html(jsel);
   $('#dina_men'+idx).html(msel);
 }
-function gantiJam(storage = 'createRoute'){
+function gantiJam(storage){
+  if (storage == undefined) storage="createRoute";
   gantiJudul('jamStart','jamStart2','00','jamSt',storage);
   gantiJudul('menitStart','menitStart2','00','menitSt',storage);
   gantiJudul('jamEnd','jamEnd2','00','jamEnd',storage);
@@ -876,7 +888,8 @@ function gantiJam(storage = 'createRoute'){
   //
   gantiDurasi($('#jamStart').val(),$('#menitStart').val(),$('#jamEnd').val(),$('#menitEnd').val());
 }
-function gantiJamTempat(idx,storage = 'createRoute'){
+function gantiJamTempat(idx,storage){
+  if (storage == undefined) storage="createRoute";
   gantiJudulTempat('jamStart_tempat-','jamStart2_tempat-','00','jamSt',idx,storage);
   gantiJudulTempat('menitStart_tempat-','menitStart2_tempat-','00','menitSt',idx,storage);
   gantiJudulTempat('jamEnd_tempat-','jamEnd2_tempat-','00','jamEnd',idx,storage);
@@ -884,7 +897,8 @@ function gantiJamTempat(idx,storage = 'createRoute'){
   //
   gantiDurasi($('#jamStart_tempat-'+idx).val(),$('#menitStart_tempat-'+idx).val(),$('#jamEnd_tempat-'+idx).val(),$('#menitEnd_tempat-'+idx).val(),idx);
 }
-function gantiBiaya(storage = 'createRoute'){
+function gantiBiaya(storage){
+  if (storage == undefined) storage="createRoute";
   var tiket = parseInt($('#hargaTiket').val());
   var food = parseInt($('#hargaFood').val());
   $('#hargaTiket2').html(int_to_rp(tiket));
@@ -893,7 +907,8 @@ function gantiBiaya(storage = 'createRoute'){
   simpanJSON(tiket,'tiket',storage);
   simpanJSON(food,'makan',storage);
 }
-function gantiBiayaTempat(idx,storage = 'createRoute'){
+function gantiBiayaTempat(idx,storage){
+  if (storage == undefined) storage="createRoute";
   var tiket = parseInt($('#hargaTiket_tempat-'+idx).val());
   var food = parseInt($('#hargaFood_tempat-'+idx).val());
   $('#hargaTiket2_tempat-'+idx).html(int_to_rp(tiket));
@@ -906,7 +921,8 @@ function gantiBiayaTempat(idx,storage = 'createRoute'){
     console.log(jsonRec.places[key]);
   }
 }
-function loadImagePlace(id,storage = 'createRoute'){
+function loadImagePlace(id,storage){
+    if (storage == undefined) storage="createRoute";
       var fileSelected=document.getElementById("take-picture-"+id).files;
         if (fileSelected.length>0)
          {
@@ -929,7 +945,8 @@ function loadImagePlace(id,storage = 'createRoute'){
           }
         }
      }
-function loadImageFileAsURL(storage = 'createRoute'){
+function loadImageFileAsURL(storage){
+  if (storage == undefined) storage="createRoute";
       var fileSelected=document.getElementById("take-picture").files;
         if (fileSelected.length>0)
          {
