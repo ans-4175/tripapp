@@ -123,15 +123,15 @@
       <!-- gambar utama & deskripsi -->
    		<div class='view1' id="picRoute">
         <div class="judul_view"><a style="color:white;" href="#popupJudul" data-rel="popup" data-transition="pop"><span id="judulRoute">Add title ...</span></a></div>
-        <div class="add_pic"><a style="color:#ffffff !important;" onclick="document.getElementById('take-picture').click()" href="">ADD<br />MAIN PICTURE</a></div>
-        <div class="ui-input-hide"><input type="file" id="take-picture" accept="image/*;capture=camera" style="display:none;" onchange="loadImageFileAsURL()"></div>
+        <div class="add_pic"><a style="color:#ffffff !important;" onclick="clickFile()" href="">ADD<br />MAIN PICTURE</a></div>
         <div class="cat_img"><a style="color:#ffffff !important;" href="#popupCat" data-rel="popup" data-transition="pop"><span id="tagsRoute">add tags ...</span></a></div> 
         <div class="map_img"><a href="" onclick="alert('peta belum tersedia')"><img class="img_btn" src="img/map_btn.png" /></a></div>
-        <div class="gal_img"><a href="" onclick="document.getElementById('take-picture').click()" ><img class="img_btn" src="img/gallery_btn.png" /></a></div>
-        <div class="cam_img"><a href="" onclick="document.getElementById('take-picture').click()"><img class="img_btn" src="img/camera_circ-btn.png" /></a></div>
+        <div class="gal_img"><a href="" onclick="clickFile()" ><img class="img_btn" src="img/gallery_btn.png" /></a></div>
+        <div class="cam_img"><a href="" onclick="clickFile()"><img class="img_btn" src="img/camera_circ-btn.png" /></a></div>
       </div>
         <div id="text_desc"><a style="color:#000 !important;" href="#popupket" data-rel="popup" data-transition="pop">
           <p><span id="ketRoute">Keterangan</span></p></a>
+          <div class="ui-input-hide"><input type="file" id="take-picture" accept="image/*;" onchange="loadImageFileAsURL()"></div>
         </div>
 
         <div class="separator"></div>
@@ -275,7 +275,7 @@
       function finishCreate(){
         var createR = JSON.parse(localStorage.getItem('createRoute'));
         //save
-        $.post("http://localhost/htdocs/trippp/trip/make/"+createR.id, { tripadd:JSON.stringify(createR) }, function( data ) {
+        $.post("http://labtekindie.net/trippp/trip/make/"+createR.id, { tripadd:JSON.stringify(createR) }, function( data ) {
             var resp = JSON.parse(data);
             console.log(resp.response);
             //hapus
@@ -284,6 +284,11 @@
             alert('Trip has been saved');
             pindahHal('browse');
         }, "json");
+      }
+      function clickFile(){
+        //$('#take-picture').click();
+        $('#take-picture').trigger('click');
+        return false;
       }
     </script>
 </div><!-- /page -->

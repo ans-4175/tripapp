@@ -641,5 +641,5 @@ margin: 0px;
     background-color: #FFD42A !important;
 }
 .ui-input-hide{
-    display: none !important;
+    display: block !important;
 }

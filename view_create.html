@@ -124,7 +124,6 @@
    		<div class='view1' id="picRoute">
         <div class="judul_view"><a style="color:white;" href="#popupJudul" data-rel="popup" data-transition="pop"><span id="judulRoute">Add title ...</span></a></div>
         <div class="add_pic"><a style="color:#ffffff !important;" onclick="document.getElementById('take-picture').click()" href="">ADD<br />MAIN PICTURE</a></div>
-        <div class="ui-input-hide"><input type="file" id="take-picture" accept="image/*;capture=camera" style="display:none;" onchange="loadImageFileAsURL('createRouteRec')"></div>
         <div class="cat_img"><a style="color:#ffffff !important;" href="#popupCat" data-rel="popup" data-transition="pop"><span id="tagsRoute">add tags ...</span></a></div> 
         <div class="map_img"><a href="" onclick="alert('peta belum tersedia')"><img class="img_btn" src="img/map_btn.png" /></a></div>
         <div class="gal_img"><a href="" onclick="document.getElementById('take-picture').click()" ><img class="img_btn" src="img/gallery_btn.png" /></a></div>
@@ -132,6 +131,7 @@
       </div>
         <div id="text_desc"><a style="color:#000 !important;" href="#popupket" data-rel="popup" data-transition="pop">
           <p><span id="ketRoute">Keterangan</span></p></a>
+          <div class="ui-input-hide"><input type="file" id="take-picture" accept="image/*;capture=camera" onchange="loadImageFileAsURL('createRouteRec')"></div>
         </div>
 
         <div class="separator"></div>
@@ -309,7 +309,7 @@
       function finishCreate(){
         var createR = JSON.parse(localStorage.getItem('createRouteRec'));
         //save
-        $.post("http://localhost/htdocs/trippp/trip/make/"+createR.id+"/1", { tripadd:JSON.stringify(createR) }, function( data ) {
+        $.post("http://labtekindie.net/trippp/trip/make/"+createR.id+"/1", { tripadd:JSON.stringify(createR) }, function( data ) {
             var resp = JSON.parse(data);
             console.log(resp.response);
             //hapus
