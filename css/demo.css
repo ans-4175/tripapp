@@ -170,7 +170,7 @@ body, input, select, textarea, button, .ui-btn {
 }
 .slider-nav{
     position: absolute;
-    bottom : 0;
+    bottom : 20px;
     left: 100px;
     text-align: center;
     display: inline;
