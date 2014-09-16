@@ -1,131 +1,125 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <title>HOP</title>
-        <link rel="stylesheet" href="themes/koko2.min.css" />
-        <link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
-        <link rel="stylesheet" type="text/css" href="css/jquery.mobile.structure-1.4.3.min.css" />
-        <link rel="stylesheet" type="text/css" href="css/indexlogin.css" />
-        <link rel="stylesheet" type="text/css" href="css/main.css" />
-        <link rel="stylesheet" type="text/css" href="css/font/typo.css" />
-        <link rel="stylesheet" type="text/css" href="css/responsive.css">
-        <script type="text/javascript" src="js/modernizr.custom.js"></script>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>HOP</title>
+    <link rel="stylesheet" href="themes/koko2.min.css" />
+    <link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/jquery.mobile.structure-1.4.3.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/demo.css" />
+    <link rel="stylesheet" type="text/css" href="css/font/typo.css" />
+    <script src="js/modernizr.custom.js"></script>
     <!--[if lt IE 9]>
 
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
   </head>
-    <body>
-        <div data-role="page" id="loginpage">
-        	<div data-role="header" data-position="fixed" class="headpage div-absolute" >
-            </div><!-- /header -->
-            
-            <div role="main" id="loginpage" data-role="ui-content">          
-                <div class="form_at">
-                    <div id="div-uname"><input class="uname_icon" id="txt-uname" type="text" name="username"  placeholder="username" data-clear-btn="true" data-shadow="false" onkeypress="return runScript(event)"></div>
-                    <div id="div-email"><input class="email_icon" id="txt-email" type="text" name="email"  placeholder="email" data-clear-btn="true" onkeypress="return runScript(event)"></div>
-                    <div id="div-pwd"><input class="pwd_icon" id="txt-password" type="password" name="password" placeholder="password" value="" autocomplete="off" data-clear-btn="true" onkeypress="return runScript(event)"></div>
+  <body>
+    <div id="fullpage">
+        <div class="slide page-one active-slide">
+            <div class="container">
+                <div>
+                    <img class="hop_logo" src="img/tutorial1.png">  
+                    <img class="logo_underline" src="img/line.png">                    
+                    <p class="text-top">CREATE &amp; SHARE<br />YOUR GREAT CITY EXPLORER</p>      
+                    <div class="skipped" onclick="skipped()">SKIP</div>
                 </div>
-
-                <div data-role="controlgroup" class="pad_aco" id="border_button">
-                    <a href="#" class="ui-btn" id="btn-create">CREATE ACCOUNT</a>
-                    <a href="#" class="ui-btn btn-na" id="tgl-create">CREATE ACCOUNT</a>
-                    <a href="#" class="ui-btn btn-na" id="registering">Trying to signup...</a>
-                    <a href="#" class="ui-btn" id="btn-login">LOG IN</a>
-                    <a href="#" class="ui-btn btn-na" id="tgl-login">LOG IN</a>
-                    <a href="#" class="ui-btn btn-na" id="logging">Trying to login...</a>
+            </div>
+        </div>
+        <div class="slide page-two">
+            <div class="container">
+                <div class="bottomdiv">
+                    <img class="pic-icon" src="img/tutorial2.png">
+                    <p class="title">DISCOVER &amp; RECORD</p>
+                    <img class="logo_underline_2" src="img/line.png"> 
+                    <br>
+                    <div class="description">
+                        <p class="sub-title">Your journey,to everywhere your city has to offer. Restaurant,Bar,Exhibits,Concerts,and more amazing place</p>
+                    </div>
+                    <div class="skipped" onclick="skipped()">SKIP</div>
                 </div>
-             </div>
-        
-        <div data-role="footer" data-position="fixed" class="div-absolute">
-            <div data-role="navbar">
-            <ul>
-                <li><a href="#" id="btn-fb" class="custom_navbar"><img class="log-img" src="img/facebook.png"><p>LOG IN WITH<br />FACEBOOK</p></a></li>
-                <li><a href="#" id="btn-google" class="custom_navbar"><img class="log-img" src="img/google.png"><p>LOG IN WITH<br />GOOGLE</p></a></li>
+            </div>
+        </div>
+        <div class="slide page-three">
+            <div class="container">
+                <div >                  
+                    <img class="pic-icon" src="img/tutorial3.png">
+                    <p class="title">CAPTURE &amp; TELL</p>
+                    <img class="logo_underline_2" src="img/line.png"> 
+                    <br>
+                    <div class="description">
+                        <p class="sub-title">Give your own story to bring it to live. Tell surrounding your city route and appeal them with your best shot of city spot</p>
+                    </div>
+                    <div class="skipped" onclick="skipped()">SKIP</div>
+                </div>
+            </div>
+        </div>
+        <div class="slide page-four">
+            <div class="container">
+                <div >
+                    <img class="pic-icon" src="img/tutorial 4.png">
+                    <p class="title blacktext">SHARE &amp; REWARD</p>
+                    <img class="logo_underline_2" src="img/line.png"> 
+                    <br>
+                    <div class="description">
+                        <p class="sub-title blacktext">Share your hop to worldwide,and present yourself with bunch of rewards.</p>
+                    </div>
+                    <div class="skipped" onclick="skipped()">SKIP</div>
+                </div>
+            </div>
+        </div>
+        <div class="slide page-five">
+            <div class="container">
+                <div>
+                    <div class="text-top-five">YOU'RE ON YOUR OWN WAY.<br />ACCESS YOUR ITINERARY ON THE HOP</div>
+                    <div class="getstarted" onclick="window.location = 'login.html'">GET STARTED</div>
+                </div>
+            </div>
+        </div>
+        <div class="slider-nav">
+            <ul class="slider-dots">
+                <li class="dot active-dot">&bull;</li>
+                <li class="dot">&bull;</li>
+                <li class="dot">&bull;</li>
+                <li class="dot">&bull;</li>
+                <li class="dot">&bull;</li>
             </ul>
-            </div><!-- /navbar -->
-                </div><!-- /footer -->
-        </div><!-- /page -->
-    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
-    <script type="text/javascript" src="js/jquery.mobile-1.4.3.min.js"></script>
-    <script type="text/javascript" src="js/functions.js"></script>
+        </div>
+        <!--div><span class="active-dot passive-dot"></span></div-->
+    </div>
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/jquery.mobile-1.4.3.min.js"></script>
+    <script src="https://hammerjs.github.io/dist/hammer.js" type="text/javascript"></script>
+    <script src="js/demo.js"></script>
     <script type="text/javascript">
+    window.onload = function() {
         //
-        var isSignup;
-        function runScript(e) {
-            if (e.keyCode == 13) {
-                if (isSignup){
-                    document.getElementById('btn-create').click();
-                }else{
-                    document.getElementById('btn-login').click();
-                }
-                return false;
-            }
+        var windowHeight = $(window).height();
+        $('#fullpage').css('min-height', windowHeight);
+        var fullpage = document.getElementById('fullpage');
+        var options = {
+          dragLockToAxis: true,
+          dragBlockHorizontal: true
+        };
+        var mc = new Hammer(fullpage,options);
+        // listen to events...
+        mc.on('swiperight dragright',function(ev){
+            console.log(ev.type +" gesture detected.");
+            demoprev();
+        });        
+        mc.on('swipeleft dragleft',function(ev){
+            console.log(ev.type +" gesture detected.");
+            demonext();
+        }); 
+        //       
+        if (localStorage.getItem("logged") === null) {
+            //stay belum login
+        }else{
+            //redirect ke now
+            pindahHal('browse');
         }
-        window.onload = function() {
-            //cek udah ada tanda login
-            isSignup = true;
-            if (localStorage.getItem("logged") === null) {
-                //stay belum login
-            }else{
-                //redirect ke now
-                pindahHal('browse');
-            }
-        }
-        //
-        var tglLogin = $('#tgl-login'),
-            btnLogin = $('#btn-login'),
-            tglCreate = $('#tgl-create'),
-            btnCreate = $('#btn-create'),
-            txtLog = $('#logging'),
-            txtReg = $('#registering'),
-            divEmail = $('#div-email'),
-            txtEmail = $('#txt-email'),
-            txtUname = $('#txt-uname'),
-            txtPassword = $('#txt-password');
-        //
-        tglCreate.hide();
-        btnLogin.hide();
-        txtLog.hide();
-        txtReg.hide();
-        //
-        function toggleBtn(){
-            tglLogin.toggle();
-            btnCreate.toggle();
-            tglCreate.toggle();
-            btnLogin.toggle();
-            divEmail.toggle();
-        }
-        //
-        btnLogin.click(function() {
-            var uname = txtUname.val();
-            var pwd = txtPassword.val();
-            setLogin(uname,pwd,'logging');
-        });
-        btnCreate.click(function() {
-            var uname = txtUname.val();
-            var pwd = txtPassword.val();
-            var imel = txtEmail.val();
-            setSignUp(uname,pwd,imel,'registering');
-        });
-        tglLogin.click(function() {
-            toggleBtn();
-            isSignup = false;
-            //alert('toggle');
-        });
-        tglCreate.click(function() {
-            toggleBtn();
-            isSignup = true;
-            //alert('toggle');
-        });
-        $('#btn-fb').click(function(){
-            alert('not yet implemented');
-        });
-        $('#btn-google').click(function(){
-            alert('not yet implemented');
-        });
+    };
     </script>
-    </body>
+  </body>
 </html>

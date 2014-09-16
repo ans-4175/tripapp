@@ -49,9 +49,14 @@
     <script src="js/jquery-1.11.1.min.js"></script>
     <script src="js/functions.js"></script>
     <script src="js/classie.js"></script>
+    <script type="text/javascript" src="js/fastclick.js"></script>
     <script src="js/jquery.mobile-1.4.3.min.js"></script>
     <script type="text/javascript">
       window.onload = function() {
+        if (localStorage.getItem("logged") === null) {
+          pindahHal('login');
+        }
+        new FastClick(document.body);
         var idtrip = getValue('id');
         getTrip(idtrip);
         $('#myPanel').load('comp_sidelink.html');

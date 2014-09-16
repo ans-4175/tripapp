@@ -11,6 +11,7 @@ CREATE
 	v icon yang sesuai
 	v kirim gambar
 	v kalau jam gak diisi, NaN
+	- kalau dia ngisi kosong gambar dan add title dll.
 RECORD
 	v info di marker
 BROWSE
@@ -28,4 +29,4 @@ ACCOUNT
 	- ganti foto profpic
 
 SERVER
-	- upload ke hosting
+	v upload ke hosting

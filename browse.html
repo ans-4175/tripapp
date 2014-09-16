@@ -56,7 +56,7 @@
 
 	<div data-role="header" data-position="fixed" data-tap-toggle="false">
     <div class="headpage">
-      <div><a href="#myPanel"><img class="side_menu" src="img/side_menu_btn.png"></a></div>
+      <div onclick="tutupTab()"><a href="#myPanel"><img class="side_menu" src="img/side_menu_btn.png"></a></div>
       <div class="browse_text">Browse</div>
     </div><!-- /header -->
   </div>
@@ -79,6 +79,7 @@
     <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="js/jquery.mobile-1.4.3.min.js"></script>
     <script type="text/javascript" src="js/functions.js"></script>
+    <script type="text/javascript" src="js/fastclick.js"></script>
     <script type="text/javascript" src="js/classie.js"></script>
 
     <script type="text/javascript">
@@ -86,6 +87,10 @@
         showSort = document.getElementById('showSort');
       var menuFind = document.getElementById('menuFind'),
         showFind = document.getElementById('showFind');
+      function tutupTab(){
+        classie.remove( menuSort, 'cbp-spmenu-open' );
+        classie.remove( menuFind, 'cbp-spmenu-open' );
+      }
       showSort.onclick = function() {
         classie.toggle( menuSort, 'cbp-spmenu-open' );
         classie.remove( menuFind, 'cbp-spmenu-open' );
@@ -104,7 +109,11 @@
       //
       var curLat, curLon;
       window.onload = function() {
-        $('#myPanel').load('comp_sidelink.html')
+        $('#myPanel').load('comp_sidelink.html');
+        new FastClick(document.body);
+        if (localStorage.getItem("logged") === null) {
+          pindahHal('login');
+        }
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function(position) {
             curLat = position.coords.latitude;

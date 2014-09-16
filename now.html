@@ -26,7 +26,7 @@
     </div> 
     <div data-role="header" data-position="fixed">
       <div class="headpage">
-        <div><a href="#myPanel"><img class="side_menu" src="img/side_menu_btn.png"></a></div>
+        <div onclick="tutupTab()"><a href="#myPanel"><img class="side_menu" src="img/side_menu_btn.png"></a></div>
         <div class="browse_text">NOW</div>
       </div><!-- /header -->
     </div>
@@ -46,6 +46,7 @@
     <script src="js/jquery.mobile-1.4.3.min.js"></script>
     <script src="js/classie.js"></script>
     <script src="js/functions.js"></script>
+    <script type="text/javascript" src="js/fastclick.js"></script>
     <!--script src="js/google.js"></script-->
     <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCIc2SbHprscbg8RW2TWpwgJx30WrKeqQw&sensor=false"> </script>
     <script type="text/javascript">
@@ -53,7 +54,9 @@
       var curLat, curLon;
       var imaps = {map:null,marker:null,listmarkers:[]};
       var pushmenu = document.getElementById('pushmenu');
-
+      function tutupTab(){
+        classie.remove( pushmenu, 'cbp-spmenu-open' );
+      }
       //event click addto cari 4square
       $('#add-archive').click(function() {
         classie.toggle( pushmenu, 'cbp-spmenu-open' );
@@ -69,10 +72,14 @@
         headerHeight = $('#header').height();
         footerHeight = $('#footer').height();
         windowHeight = $(window).height();
+        new FastClick(document.body);
         $('#main-map').css('min-height', windowHeight - headerHeight - footerHeight);
         //
         $('#myPanel').load('comp_sidelink.html')
         //
+        if (localStorage.getItem("logged") === null) {
+          pindahHal('login');
+        }
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function(position) {
             curLat = position.coords.latitude;

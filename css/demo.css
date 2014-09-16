@@ -1,20 +1,11 @@
-body, input, select, textarea, button, .ui-btn {font-family: 'ostrich_sansmedium' !important;}
+body, input, select, textarea, button, .ui-btn {
+    font-family: 'ostrich_sanscondensed_regular' !important;
+}
 
 .ui-overlay-a, .ui-page-theme-a, .ui-page-theme-a .ui-panel-wrapper,.ui-btn {
     text-shadow: none !important;
 }
-@font-face {
-    font-family: 'ostrich_sanscondensed_light';
-    src: url('ostrich-light-webfont.eot');
-    src: url('ostrich-light-webfont.eot?#iefix') format('embedded-opentype'),
-    url('ostrich-light-webfont.woff2') format('woff2'),
-    url('ostrich-light-webfont.woff') format('woff'),
-    url('ostrich-light-webfont.ttf') format('truetype'),
-    url('ostrich-light-webfont.svg#ostrich_sanscondensed_light') format('svg');
-    font-weight: normal;
-    font-style: normal;
 
-}
 .form_at {/*padding buat login*/
     width: 70%;
     margin-top: 20px;
@@ -30,28 +21,24 @@ body, input, select, textarea, button, .ui-btn {font-family: 'ostrich_sansmedium
  border-width: 0 0 !important;
 }
 
-.headpage {
-	height: 480px;
-	background-image: url(../img/page1.png);
-	background-size: 100% 100%;
-	background-repeat: no-repeat;
-}
 .hop_logo{
     position: relative;    
-    top: 50px;   
+    top: 75px;   
+    margin: 0 auto;
 }
 .logo_underline{
     position: relative;
-    top: 65px;
+    top: 90px;
+    margin: 0 auto;
 }
 .logo_underline_2{
     position: relative;
-    top: 200px;
+    top: 185px;
 }
 .sub_text{
     position: relative;
     top:40px;
-    font-family: 'ostrich_sanscondensed_light'!important;
+    font-family: 'ostrich_sanscondensed_regular'!important;
     font-size: 150%;
     color: white;
     text-align: center;  
@@ -75,38 +62,38 @@ body, input, select, textarea, button, .ui-btn {font-family: 'ostrich_sansmedium
     display: block;
 }
 .page-one{
-    height: 480px;
+    min-height: inherit;
+    background-size: cover;
     background-image: url(../img/page1.png);
-    background-size: 100% 100%;
     background-repeat: no-repeat;
 }
 .page-two{
-    height: 480px;
+    min-height: inherit;
+    background-size: cover;
     background-image: url(../img/page2.png);
-    background-size: 100% 100%;
     background-repeat: no-repeat;
 }
 .page-three{
-    height: 480px;
+    min-height: inherit;
+    background-size: cover;
     background-image: url(../img/page3.png);
-    background-size: 100% 100%;
     background-repeat: no-repeat;
 }
 .page-four{
-    height: 480px;
+    min-height: inherit;
+    background-size: cover;
     background-image: url(../img/page4.png);
-    background-size: 100% 100%;
     background-repeat: no-repeat;
 }
 .page-five{
-    height: 480px;
+    min-height: inherit;
+    background-size: cover;
     background-image: url(../img/page5.png);
-    background-size: 100% 100%;
     background-repeat: no-repeat;
 }
 .container{    
     font-size: 150%;    
-    font-family: 'ostrich_sanscondensed_light'!important;
+    font-family: 'ostrich_sanscondensed_regular'!important;
     color: white;
     text-align: center;    
 }
@@ -119,9 +106,13 @@ body, input, select, textarea, button, .ui-btn {font-family: 'ostrich_sansmedium
     position: relative;
     top: 250px;
 }
+.blacktext{
+    color: #000;
+}
 .text-top{
     position: relative;
-    top: 50px;
+    top: 100px;
+    font-weight: bolder;
     font-size: 20pt;
 }
 .text-top-five{
@@ -132,25 +123,43 @@ body, input, select, textarea, button, .ui-btn {font-family: 'ostrich_sansmedium
 }
 .title{
     position: relative;
-    top: 230px;
+    top: 220px;
     font-size: 24pt;
+    font-weight: bolder;
 }
 .sub-title{
-    position: relative;
-    top: 160px;
-    font-size: 10pt;
+    font-size: 11pt;
+    letter-spacing: 1.5px;
 }
 .description{
     width: 200px;
+    position: relative;
+    top: 150px;
     margin:0 auto;
 }
 .getstarted{
-    width: 140px;
+    width: 120px;
+    line-height: 18pt;
     margin:0 auto;
-    border: 1px solid white; 
+    border: 1px solid black; 
     border-radius: 5px;
+    color: black;
     position: relative;
-    top:300px;
+    top:310px;
+    cursor: pointer;
+}
+
+.skipped{
+    width: 60px;
+    line-height: 18pt;
+    margin:0 auto;
+    border: 1px solid #BBBCBC; 
+    border-radius: 5px;
+    color: #BBBCBC;
+    position: absolute;
+    top:10px;
+    right: 10px;
+    cursor: pointer;
 }
 
 .text-bottom{     
@@ -161,16 +170,9 @@ body, input, select, textarea, button, .ui-btn {font-family: 'ostrich_sansmedium
 }
 .slider-nav{
     position: absolute;
-    bottom : 250px;
-    left: 180px;
+    bottom : 0;
+    left: 100px;
     text-align: center;
-    margin-top: 20px;   
-    display: inline;
-}
-.arrow-prev{
-    display: inline;
-}
-.arrow-next{
     display: inline;
 }
 .slider-dots{
@@ -183,69 +185,16 @@ body, input, select, textarea, button, .ui-btn {font-family: 'ostrich_sansmedium
     color: #bbbcbc;
     display: inline;
     font-size: 30px;
-    margin-right: 5px;
 }
 .slider-dots li.active-dot {
-  color: #FC7A10;
+  background-image: url(../img/round_fill.png) !important;
+  background-repeat: no-repeat !important;
+}
+.slider-dots li.dot {
+  background-image: url(../img/round_outline.png);
+  background-repeat: no-repeat !important;
 }
 #border_button .ui-btn {
     border: none !important;
     background-color: #ffd42a;
 }
-
-.uname_icon {
-    background-image: url(../img/login_name.png) !important;
-    background-repeat: no-repeat !important;
-    background-size: 20px auto !important;
-    padding-left: 30px !important;
-}
-
-.email_icon {
-    background-image: url(../img/login_email.png) !important;
-    background-repeat: no-repeat !important;
-    background-size: 25px auto !important;
-    padding-left: 30px !important;
-}
-
-.pwd_icon {
-    background-image: url(../img/login_password.png) !important;
-    background-repeat: no-repeat !important;
-    background-size: 20px auto !important;
-    padding-left: 30px !important;
-}
-
-.ui-input-text{ /* icon placeholder*/
-   color: #181a14 !important;
-   border-top: none !important;
-   border-left: none !important;
-   border-right:none !important;
-   border-color: #181a14 !important;
-}
-
-
-/* remove navbar separator*/
-.ui-navbar li .ui-btn .ui-btn-inner, .ui-navbar li .ui-btn {
-    border: 0 solid red !important;
-    box-shadow: none !important;
-}
-/*ganti icon*/
-.ui-arrow:after {
-    background-image: url(../img/google.png);
-    background-size: 15px 15px;
-}
-
-.ui-arrow-a:after {
-    background-image: url(../img/facebook.png);
-    background-size:15px 15px;
-}
-
-a:link {
-    text-decoration: none !important;
-}
-
-.mid_text {text-align: center !important}
-
-.padding_index{
-    padding-top: 50px;
-}
-

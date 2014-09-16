@@ -56,7 +56,7 @@
 
 	<div data-role="header" data-position="fixed" data-tap-toggle="false">
     <div class="headpage">
-      <div><a href="#myPanel"><img class="side_menu" src="img/side_menu_btn.png"></a></div>
+      <div onclick="tutupTab()"><a href="#myPanel"><img class="side_menu" src="img/side_menu_btn.png"></a></div>
       <div class="browse_text">Saved Place</div>
     </div><!-- /header -->
   </div>
@@ -79,6 +79,7 @@
     <script src="js/jquery-1.11.1.min.js"></script>
     <script src="js/jquery.mobile-1.4.3.min.js"></script>
     <script src="js/functions.js"></script>
+    <script type="text/javascript" src="js/fastclick.js"></script>
     <script src="js/classie.js"></script>
 
     <script type="text/javascript">
@@ -87,6 +88,10 @@
       var menuFind = document.getElementById('menuFind'),
         showFind = document.getElementById('showFind');
       var uid;
+      function tutupTab(){
+        classie.remove( menuSort, 'cbp-spmenu-open' );
+        classie.remove( menuFind, 'cbp-spmenu-open' );
+      }
       showSort.onclick = function() {
         classie.toggle( menuSort, 'cbp-spmenu-open' );
         classie.remove( menuFind, 'cbp-spmenu-open' );
@@ -102,6 +107,8 @@
         }
       };
       window.onload = function() {
+        $('#myPanel').load('comp_sidelink.html');
+        new FastClick(document.body);
         var checked = getCheckMulti('listGrup');
         var qword = $('#searchPlace').val();
         uid = getValue('uid');

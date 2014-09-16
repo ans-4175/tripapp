@@ -57,7 +57,7 @@
 
   <div data-role="header" data-position="fixed">
       <div class="headpage">
-        <div><a href="#myPanel"><img class="side_menu" src="img/side_menu_btn.png"></a></div>
+        <div onclick="tutupTab()"><a href="#myPanel"><img class="side_menu" src="img/side_menu_btn.png"></a></div>
         <div class="side_menu2"><a href="#"><img src="img/new_hop.png"></a></div>
         <div class="ui-grid-a">
               <div class="ui-block-a nav_hops"><a style="color:#000000 !important;" href=""><span class="mar_left">Created</span></a></div>
@@ -80,10 +80,11 @@
       </div><!-- /navbar -->
   </div><!-- /footer -->
     
-    <script src="js/jquery-1.11.1.min.js"></script>
-    <script src="js/jquery.mobile-1.4.3.min.js"></script>
-    <script src="js/functions.js"></script>
-    <script src="js/classie.js"></script>
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery.mobile-1.4.3.min.js"></script>
+    <script type="text/javascript" src="js/functions.js"></script>
+    <script type="text/javascript" src="js/fastclick.js"></script>
+    <script type="text/javascript" src="js/classie.js"></script>
 
     <script type="text/javascript">
       var logged = JSON.parse(localStorage.getItem('logged'));
@@ -92,6 +93,10 @@
         showSort = document.getElementById('showSort');
       var menuFind = document.getElementById('menuFind'),
         showFind = document.getElementById('showFind');
+      function tutupTab(){
+        classie.remove( menuSort, 'cbp-spmenu-open' );
+        classie.remove( menuFind, 'cbp-spmenu-open' );
+      }
       showSort.onclick = function() {
         classie.toggle( menuSort, 'cbp-spmenu-open' );
         classie.remove( menuFind, 'cbp-spmenu-open' );
@@ -109,6 +114,10 @@
       //
       var curLat, curLon;
       window.onload = function() {
+        if (localStorage.getItem("logged") === null) {
+          pindahHal('login');
+        }
+        new FastClick(document.body);
         var checked = getCheckMulti('listGrup');
         //
         $('#myPanel').load('comp_sidelink.html');

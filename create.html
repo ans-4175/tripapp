@@ -181,7 +181,7 @@
 		<div data-role="navbar">
         <ul>
             <li id="btnAddPlace" class="img_nav"><a href="#" onclick="pindahAddplace()" data-icon="false">&#43; ADD PLACE</a></li>
-            <li id="btnFinish" class="img_nav"><a href="#" onclick="finishCreate()" data-icon="false">FINISH</a></li>
+            <li id="btnFinish" class="img_nav"><a href="#" onclick="finishCreate()" data-icon="false">FINISH<span style="display:none" id='loading'> (loading to upload)</span></a></li>
         </ul>
     	</div><!-- /navbar -->
 
@@ -190,14 +190,19 @@
     <script src="js/jquery-1.11.1.min.js"></script>
     <script src="js/functions.js"></script>
     <script src="js/classie.js"></script>
+    <script type="text/javascript" src="js/fastclick.js"></script>
     <script src="js/jquery.mobile-1.4.3.min.js"></script>
     <script type="text/javascript">
       window.onload = function() {
         $('#myPanel').load('comp_sidelink.html');
+        if (localStorage.getItem("logged") === null) {
+          pindahHal('login');
+        }
         if (localStorage.getItem("createRoute") !== null) {
           //ambil data
           var totiket = 0;
           var totmakan = 0;
+          new FastClick(document.body);
           var createR = JSON.parse(localStorage.getItem('createRoute'));
           console.log(createR);
           //places
@@ -219,7 +224,11 @@
             totiket += parseInt(createR.places[place].tiket);
             totmakan += parseInt(createR.places[place].makan);
             //pic
-            $('#picPlace-'+place).css('background-image', 'url('+createR.places[place].pic+')');
+            if (createR.places[place].pic){
+              $('#picPlace-'+place).css('background-image', 'url('+createR.places[place].pic+')');
+            }else{
+              $('#picPlace-'+place).css('background-image', 'url(img/default-background.png)');
+            }
           }
           $('#judulRoute').html(createR.judul);
           if (createR.tags.length > 0)
@@ -249,7 +258,11 @@
           createR['tiket'] = totiket;
           createR['makan'] = totmakan;
           //pic
-          $('#picRoute').css('background-image', 'url('+createR['pic']+')');
+          if (createR['pic']){
+            $('#picRoute').css('background-image', 'url('+createR['pic']+')');
+          }else{
+            $('#picRoute').css('background-image', 'url(img/default-background.png)');
+          }
           //simpan
           localStorage.setItem('createRoute', JSON.stringify(createR));  
         }else{
@@ -260,7 +273,7 @@
           createR['judul'] = 'add title...';
           createR['ket'] = 'keterangan...';
           createR['tags'] = [];
-          createR['pic'] = 'img/default-background.png';
+          createR['pic'] = '';
           createR['jamSt'] = '00';
           createR['menitSt'] = '00';
           createR['jamEnd'] = '00';
@@ -275,6 +288,7 @@
       function finishCreate(){
         var createR = JSON.parse(localStorage.getItem('createRoute'));
         //save
+        $('#loading').show();
         $.post("http://labtekindie.net/trippp/trip/make/"+createR.id, { tripadd:JSON.stringify(createR) }, function( data ) {
             var resp = JSON.parse(data);
             console.log(resp.response);

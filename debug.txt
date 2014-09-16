@@ -1,0 +1,4 @@
+DEBUG
+	-ternyata pas ngisi kosong, upload gambar tetap juga, padahal harusnya tidak.
+	-tombol finish pas recording
+	-view-edit pas recording

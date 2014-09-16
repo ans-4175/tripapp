@@ -115,7 +115,7 @@ function setLogin(uname,pwd,showid){
 
 function logOut(){
   localStorage.removeItem('logged');
-  window.location = "index.html";
+  window.location = "login.html";
 }
 
 function getPin(pinColor,label){
@@ -282,7 +282,7 @@ function initMap(imaps,divid,lat,lon) {
               localStorage.setItem('browselist', JSON.stringify(resp.data));
               //console.log(resp.data);
               //tampilkan
-              var strContent = "";
+              $("#content_browse").html('');
               for (key in resp.data){
                 var strContent = "";
                 strContent += "<li><a onclick='pindahView("+resp.data[key].idTrip+")' href='#'><div class='browse1' id=\"viewlist-"+resp.data[key].idTrip+"\"><p>"+resp.data[key].judul+"</p><div class='circleBase type1'></div><div class='ratingc'>";
@@ -309,6 +309,8 @@ function initMap(imaps,divid,lat,lon) {
                 //change bg
                 if (resp.data[key].coverfoto){
                   $('#viewlist-'+resp.data[key].idTrip).css('background-image', 'url(\"http://labtekindie.net/trippp/'+resp.data[key].coverfoto+'\")');
+                }else{
+                  $('#viewlist-'+resp.data[key].idTrip).css('background-image', 'url(img/default-background.png)');
                 }
               }
               //$("#content_browse").html(strContent);
@@ -360,9 +362,10 @@ function initMap(imaps,divid,lat,lon) {
           break;
       }
       //tampilkan
-      var strContent = "";
+      $("#content_browse").html('');
       for (key in resps){
-        strContent += "<li><a onclick='pindahView("+resps[key].idTrip+")' href='#'><div class='browse1'><p>"+resps[key].judul+"</p><div class='circleBase type1'></div><div class='ratingc'>";
+        var strContent = "";
+        strContent += "<li><a onclick='pindahView("+resps[key].idTrip+")' href='#'><div class='browse1' id=\"viewlist-"+resps[key].idTrip+"\"><p>"+resps[key].judul+"</p><div class='circleBase type1'></div><div class='ratingc'>";
           //cost
           strContent += "<div>";
           for (var b=1; b<=5; b++){
@@ -382,8 +385,16 @@ function initMap(imaps,divid,lat,lon) {
           }
           strContent += "</div>";
         strContent += "</div><div id='mapbtn'><img src='img/map_btn.png'></div></div></a></li>";
+        strContent += "</div><div id='mapbtn'><img src='img/map_btn.png'></div></div></a></li>";
+        $("#content_browse").append(strContent);
+        //change bg
+        if (resps[key].coverfoto){
+          $('#viewlist-'+resps[key].idTrip).css('background-image', 'url(\"http://labtekindie.net/trippp/'+resps[key].coverfoto+'\")');
+        }else{
+          $('#viewlist-'+resps[key].idTrip).css('background-image', 'url(img/default-background.png)');
+        }
       }
-      $("#content_browse").html(strContent);
+      //$("#content_browse").html(strContent);
       classie.toggle( menuSort, 'cbp-spmenu-open' );
     }
 
@@ -395,9 +406,10 @@ function initMap(imaps,divid,lat,lon) {
               localStorage.setItem('browselist', JSON.stringify(resp.data));
               //console.log(resp.data);
               //tampilkan
-              var strContent = "";
+              $("#content_browse").html('');
               for (key in resp.data){
-                strContent += "<li><a onclick='pindahView("+resp.data[key].idTrip+")' href='#'><div class='browse1'><p>"+resp.data[key].judul+"</p><div class='circleBase type1'></div><div class='ratingc'>";
+                var strContent = "";
+                strContent += "<li><a onclick='pindahView("+resp.data[key].idTrip+")' href='#'><div class='browse1' id=\"viewlist-"+resp.data[key].idTrip+"\"><p>"+resp.data[key].judul+"</p><div class='circleBase type1'></div><div class='ratingc'>";
                   //cost
                   strContent += "<div>";
                   for (var b=1; b<=5; b++){
@@ -418,8 +430,15 @@ function initMap(imaps,divid,lat,lon) {
                   strContent += "</div>";
                   var marker = (resp.data[key].isDone) ? "marker_done" : "marker_wishlist";
                 strContent += "</div><div id='mapbtn'><img src='img/map_btn.png'></div></div><div class='marker_done'><img class='marker_done' src='img/"+marker+".png'></div></a></li>";
+                $("#content_browse").append(strContent);
+                //change bg
+                if (resp.data[key].coverfoto){
+                  $('#viewlist-'+resp.data[key].idTrip).css('background-image', 'url(\"http://labtekindie.net/trippp/'+resp.data[key].coverfoto+'\")');
+                }else{
+                  $('#viewlist-'+resp.data[key].idTrip).css('background-image', 'url(img/default-background.png)');
+                }
               }
-              $("#content_browse").html(strContent);
+              //$("#content_browse").html(strContent);
           }else{
               alert("Nothing trips nearby right now");
           }
@@ -454,7 +473,7 @@ function initMap(imaps,divid,lat,lon) {
     createR['key'] = urutan;
     createR['judul'] = datap.nama;
     createR['ket'] = (datap.keterangan) ? datap.keterangan : 'add keterangan';
-    createR['pic'] = (datap.fotourl) ? datap.fotourl : 'img/img/default-background.png';
+    createR['pic'] = (datap.fotourl) ? 'http://labtekindie.net/trippp/'+datap.fotourl : '';
     createR['lat'] = datap.lat;
     createR['lon'] = datap.lon;
     createR['kota'] = datap.kota;

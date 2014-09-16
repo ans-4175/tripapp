@@ -51,7 +51,7 @@
 
     	<div data-role="header" data-position="fixed">
         	<div class="headpage">
-        		<div><a href="#myPanel"><img class="side_menu" src="img/side_menu_btn.png"></a></div>
+        		<div onclick="tutupTab()"><a href="#myPanel"><img class="side_menu" src="img/side_menu_btn.png"></a></div>
         		<div class="browse_text">Recording Hop</div>
      		</div><!-- /header -->
      	</div>
@@ -66,7 +66,7 @@
     		<div data-role="navbar">
             <ul>
                 <li class="img_nav"><a id="add-route" href="#" class="ui-btn" data-icon="false"><img  src="img/add_to_route.png">Add to Route</a></li>
-                <li class="img_nav"><a id="finish" href="#" class="ui-btn" data-icon="false"><img  src="img/finish.png">Finish Rec</a></li>
+                <li class="img_nav"><a id="finish" href="#" class="ui-btn" data-icon="false"><img  src="img/finish.png">Edit Rec</a></li>
             </ul>
         	</div><!-- /navbar -->
           <a id="showFin" href="" class="bottom_menu"><img src="img/bottom_menu.png"></a>
@@ -78,6 +78,7 @@
     <!--script src="js/google.js"></script-->
     <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCIc2SbHprscbg8RW2TWpwgJx30WrKeqQw&sensor=false"> </script>
     <script src="js/classie.js"></script>
+    <script type="text/javascript" src="js/fastclick.js"></script>
     <script type="text/javascript">
       //init
       var headerHeight,footerHeight,windowHeight;
@@ -86,6 +87,9 @@
       //
       var pushmenu = document.getElementById('pushmenu');
       var pushmenu2 = document.getElementById('pushmenu2');
+      function tutupTab(){
+        classie.remove( pushmenu, 'cbp-spmenu-open' );
+      }
       //event click addto cari 4square
       $('#add-route').click(function() {
         classie.toggle( pushmenu, 'cbp-spmenu-open' );
@@ -111,10 +115,15 @@
         headerHeight = $('#header').height();
         footerHeight = $('#footer').height();
         windowHeight = $(window).height();
+        new FastClick(document.body);
         $('#main-map').css('min-height', windowHeight - headerHeight - footerHeight);
         $('#myPanel').load('comp_sidelink.html');
         //
+        if (localStorage.getItem("logged") === null) {
+          pindahHal('login');
+        }
         if (localStorage.getItem("startRec") !== null) {
+          console.log(localStorage.getItem("startRec"));
           if (confirm('Continue last record ?')) {
               baru = false;
           } else {
